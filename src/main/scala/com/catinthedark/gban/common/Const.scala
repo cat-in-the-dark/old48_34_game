@@ -19,7 +19,7 @@ object Const extends ConstDelegate {
     UI.playerDownWH
   )
 
-  val debugEnabled = onOff("debug render", true)
+  val debugEnabled = onOff("debug render", false)
 
   object UI {
     val skyYRange = vec2Range("sky parallax move", new Vector2(300, 600))
