@@ -22,7 +22,7 @@ class View(val shared: Shared1) extends SimpleUnit {
 
   val hud = new Hud(shared)
 
-  def onSitStand(d: UpDown): Unit = {
+  def onSitStand(d: State): Unit = {
     myHedge.go(d)
     ground.go(d)
     road.go(d)
@@ -84,7 +84,7 @@ class View(val shared: Shared1) extends SimpleUnit {
 
     magicBatch managed { batch =>
       magicBatch.drawWithDebug(
-        shared.player.texture,
+        shared.player.texture(delta),
         shared.player.rect, shared.player.rect)
     }
 

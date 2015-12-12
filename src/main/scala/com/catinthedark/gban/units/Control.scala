@@ -4,7 +4,7 @@ package com.catinthedark.gban.units
 import com.badlogic.gdx.{Input, InputAdapter, Gdx}
 
 import com.catinthedark.gban.common.Const
-import com.catinthedark.gban.view.{DOWN, UP, UpDown}
+import com.catinthedark.gban.view.{DOWN, UP, State}
 
 import com.catinthedark.lib._
 import org.lwjgl.util.Point
@@ -14,7 +14,7 @@ import org.lwjgl.util.Point
   */
 abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with Interval {
   val interval = 30f
-  val onSitStand = new Pipe[UpDown]()
+  val onSitStand = new Pipe[State]()
   val onShoot = new Pipe[Point]()
   val onGameReload = new Pipe[Unit]()
   val onMoveLeft = new Pipe[Unit]()

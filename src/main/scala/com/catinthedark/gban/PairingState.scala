@@ -24,12 +24,6 @@ class PairingState(shared0: Shared0, name: String) extends Stub(name) with Textu
       }
     })
     
-    if (shared0.serverAddress != null) {
-      shared0.networkControl = new NetworkClientControl(shared0.serverAddress)
-    } else {
-      shared0.networkControl = new NetworkServerControl()
-    }
-    
     new Thread(shared0.networkControl).start()
     println("Network thread started")
   }

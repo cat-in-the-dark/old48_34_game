@@ -32,6 +32,8 @@ object Const extends ConstDelegate {
   val debugEnabled = onOff("debug render", false)
 
   object UI {
+    val animationSpeed = 0.2f
+
     val skyYRange = vec2Range("sky parallax move", new Vector2(300, 600))
 
     val myHedgeYRange = vec2Range("myHedge parallax move", new Vector2(-31, 87))

@@ -48,4 +48,6 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
     pushSocket.close()
     ctx.destroy()
   }
+
+  override def isServer: Boolean = false
 }
