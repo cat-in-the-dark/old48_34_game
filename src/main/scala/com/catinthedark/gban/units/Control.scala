@@ -2,8 +2,10 @@ package com.catinthedark.gban.units
 
 
 import com.badlogic.gdx.{Input, InputAdapter, Gdx}
+import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.view.{DOWN, UP, Direction}
 import com.catinthedark.lib._
+import org.lwjgl.util.Point
 
 /**
   * Created by over on 22.01.15.
@@ -11,6 +13,7 @@ import com.catinthedark.lib._
 abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with Interval {
   val interval = 30f
   val onSitStand = new Pipe[Direction]()
+  val onShoot = new Pipe[Point]()
 
   override def onActivate() = {
     Gdx.input.setInputProcessor(new InputAdapter {
@@ -26,6 +29,16 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with In
         if (keycode == Input.Keys.CONTROL_LEFT) {
           onSitStand(DOWN)
           shared.shared0.networkControl.move(0, standUp = true)
+        }
+        true
+      }
+
+      override def touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = {
+        if (pointer == Input.Buttons.LEFT) {
+          val x = Const.Projection.calcX(screenX)
+          val y = Const.Projection.calcX(screenY)
+          println(s"screenX: $screenX screenY: $screenY pointer: $pointer button: $button x: $x y: $y")
+          onShoot(new Point(screenX, screenY))
         }
         true
       }

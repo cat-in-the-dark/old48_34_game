@@ -1,5 +1,6 @@
 package com.catinthedark.gban.common
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.math.Vector2
 import com.catinthedark.lib.constants.ConstDelegate
 
@@ -26,6 +27,14 @@ object Const extends ConstDelegate {
 
     val enemyHedgeYRange = vec2Range("enemy hedge parallax move", new Vector2(247, 290))
     val enemyHedgeParallaxSpeed = frange("enemy hedge parallax move", 500, Some(500), Some(1000))
+  }
+  
+  object Projection {
+    val width = 1366
+    val height = 768
+    
+    def calcX(screenX: Int): Int = screenX * Const.Projection.width / Gdx.graphics.getWidth
+    def calcY(screenY: Int): Int = screenY * Const.Projection.height / Gdx.graphics.getHeight
   }
 
   val serverPullPort = 9000
