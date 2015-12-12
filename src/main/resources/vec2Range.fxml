@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="label" text="Label" textAlignment="JUSTIFY" />
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <children>
+         <VBox>
+            <children>
+               <HBox>
+                  <children>
+                     <Label text="x:" />
+                        <TextField fx:id="input" minWidth="45" prefWidth="100.0" />
+                        <Slider fx:id="slider" max="50.0" min="10.0" prefWidth="170.0" />
+                  </children>
+               </HBox>
+               <HBox>
+                  <children>
+                     <Label text="y:" />
+                     <TextField fx:id="input1" minWidth="45" prefWidth="100.0" />
+                     <Slider fx:id="slider1" max="50.0" min="10.0" prefWidth="170.0"/>
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
+            <Button fx:id="button" minWidth="26" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-image: url('images/save.png'); -fx-background-position: center; -fx-background-repeat: no-repeat;" />
+        </children>
+    </HBox>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>

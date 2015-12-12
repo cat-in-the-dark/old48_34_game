@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox alignment="CENTER_LEFT" spacing="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <CheckBox fx:id="checkbox" mnemonicParsing="false" text="CheckBox" />
+      <Button fx:id="button" minWidth="26" prefHeight="26.0" prefWidth="26.0" style="-fx-background-image: url('images/save.png'); -fx-background-position: center; -fx-background-repeat: no-repeat;" />
+   </children>
+</HBox>
