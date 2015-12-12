@@ -32,7 +32,9 @@ class NetworkServerControl extends NetworkControl {
           case SHOOT_PREFIX => shootListener()
           case ILOOSE_PREFIX => iLooseListener()
           case IWON_PREFIX => iWonListener()
-          case HELLO_PREFIX => isConnected = Some()
+          case HELLO_PREFIX =>
+            pushSocket.send(s"$HELLO_PREFIX:")
+            isConnected = Some()
           case _ => println(s"UPS, wrong prefix $rawData")
         }
       }

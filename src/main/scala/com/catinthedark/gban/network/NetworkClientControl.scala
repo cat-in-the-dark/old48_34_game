@@ -12,9 +12,7 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
     val pushSocket = ctx.createSocket(ZMQ.PUSH)
     pullSocket.connect(s"tcp://$serverAddress:${Const.serverPushPort}")
     pushSocket.connect(s"tcp://$serverAddress:${Const.serverPullPort}")
-    println(s"Connected to $serverAddress")
     pushSocket.send(s"$HELLO_PREFIX:")
-    isConnected = Some()
 
     val pollItems = Array(new PollItem(pullSocket, Poller.POLLIN), new PollItem(pushSocket, Poller.POLLOUT))
 
@@ -34,6 +32,9 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
           case SHOOT_PREFIX => shootListener()
           case ILOOSE_PREFIX => iLooseListener()
           case IWON_PREFIX => iWonListener()
+          case HELLO_PREFIX => 
+            println(s"Connected to $serverAddress")
+            isConnected = Some()
           case _ => println(s"UPS, wrong prefix $rawData")
         }
       }
