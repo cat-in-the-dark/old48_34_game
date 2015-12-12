@@ -2,8 +2,10 @@ package com.catinthedark.gban.units
 
 
 import com.badlogic.gdx.{Input, InputAdapter, Gdx}
+
 import com.catinthedark.gban.common.Const
-import com.catinthedark.gban.view.{DOWN, UP, Direction}
+import com.catinthedark.gban.view.{DOWN, UP, UpDown}
+
 import com.catinthedark.lib._
 import org.lwjgl.util.Point
 
@@ -12,7 +14,7 @@ import org.lwjgl.util.Point
   */
 abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with Interval {
   val interval = 30f
-  val onSitStand = new Pipe[Direction]()
+  val onSitStand = new Pipe[UpDown]()
   val onShoot = new Pipe[Point]()
   val onGameReload = new Pipe[Unit]
   
@@ -23,7 +25,7 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with In
       override def keyDown(keycode: Int): Boolean = {
         keycode match {
           case STAND_KEY =>
-            onSitStand(UP)
+            onSitStand(DOWN)
             shared.shared0.networkControl.move(0, standUp = false)
           case Input.Keys.ESCAPE => onGameReload()
           case _ =>
@@ -33,7 +35,7 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with In
 
       override def keyUp(keycode: Int): Boolean = {
         if (keycode == STAND_KEY) {
-          onSitStand(DOWN)
+          onSitStand(UP)
           shared.shared0.networkControl.move(0, standUp = true)
         }
         true

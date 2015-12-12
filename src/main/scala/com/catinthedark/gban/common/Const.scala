@@ -9,10 +9,18 @@ import com.catinthedark.lib.constants.ConstDelegate
   */
 object Const extends ConstDelegate {
   override def delegate = Seq(
-    UI.myHedgeYRange, UI.myHedgeParallaxSpeed,
-    UI.groundYRange, UI.groundParallaxSpeed,
-    UI.roadYRange, UI.roadParallaxSpeed,
-    UI.enemyHedgeYRange, UI.enemyHedgeParallaxSpeed)
+    debugEnabled,
+    //    UI.myHedgeYRange, UI.myHedgeParallaxSpeed,
+    //    UI.groundYRange, UI.groundParallaxSpeed,
+    //    UI.roadYRange, UI.roadParallaxSpeed,
+    //    UI.enemyHedgeYRange, UI.enemyHedgeParallaxSpeed)
+    UI.playerY,
+    UI.playerUpWH,
+    UI.playerDownWH
+  )
+
+  val debugEnabled = onOff("debug render", true)
+
   object UI {
     val skyYRange = vec2Range("sky parallax move", new Vector2(300, 600))
 
@@ -27,6 +35,11 @@ object Const extends ConstDelegate {
 
     val enemyHedgeYRange = vec2Range("enemy hedge parallax move", new Vector2(247, 290))
     val enemyHedgeParallaxSpeed = frange("enemy hedge parallax move", 500, Some(500), Some(1000))
+
+
+    val playerY = frange("player y", 34, Some(0), Some(500))
+    val playerUpWH = vec2Range("player up width height", new Vector2(200, 360))
+    val playerDownWH = vec2Range("player down width height", new Vector2(200, 300))
   }
   
   object Projection {

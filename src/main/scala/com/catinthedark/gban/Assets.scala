@@ -28,6 +28,11 @@ object Assets {
 
     val road = new Texture(Gdx.files.internal("textures/road.gif"))
     val enemyHedge = new Texture(Gdx.files.internal("textures/enemyHedge.gif"))
+
+    val player1Frames = TextureRegion.split(
+      new Texture(Gdx.files.internal("textures/player1.png")), 200, 360)
+    val playerUp = player1Frames(0)(0)
+    val playerDown = player1Frames(0)(1)
   }
 
   object Fonts {
