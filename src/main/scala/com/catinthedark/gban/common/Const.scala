@@ -45,8 +45,8 @@ object Const extends ConstDelegate {
   }
   
   object Projection {
-    val width = 1366F
-    val height = 768F
+    val width = 1161F
+    val height = 652F
     
     def calcX(screenX: Int): Int = (screenX.toFloat * Const.Projection.width / Gdx.graphics.getWidth).toInt
     def calcY(screenY: Int): Int = (screenY.toFloat * Const.Projection.height / Gdx.graphics.getHeight).toInt
