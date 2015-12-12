@@ -13,6 +13,8 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   var forceReload = false
 
   control.onSitStand.ports += view.onSitStand
+  control.onMoveLeft.ports += view.onMoveLeft
+  control.onMoveRight.ports += view.onMoveRight
   control.onGameReload + (_ => forceReload = true)
 
   val children = Seq(view, control)

@@ -26,8 +26,44 @@ class View(val shared: Shared1) extends SimpleUnit {
     road.go(d)
     enemyHedge.go(d)
     shared.player.state = d
+    shared.shared0.networkControl.move(shared.player.x, standUp = d == UP)
   }
 
+  def onMoveLeft(u: Unit): Unit = {
+    if (shared.player.state == UP) {
+      moveLeft(Const.gamerSpeed())
+      shared.shared0.networkControl.move(shared.player.x, standUp = true)
+    } else {
+      moveLeft(Const.gamerSlowSpeed())
+    }
+  }
+
+  def onMoveRight(u: Unit): Unit = {
+    if (shared.player.state == UP) {
+      moveRight(Const.gamerSpeed())
+      shared.shared0.networkControl.move(shared.player.x, standUp = true)
+    } else {
+      moveRight(Const.gamerSlowSpeed())
+    }
+  }
+  
+  def moveLeft(speed: Float): Unit = {
+    println(shared.player.x, Const.UI.playerUpWH().x)
+    if (shared.player.x - speed <= 0) {
+      shared.player.x = 0
+    } else {
+      shared.player.x -= speed
+    }
+  }
+  
+  def moveRight(speed: Float): Unit = {
+    println(shared.player.x, Const.UI.playerUpWH().x)
+    if (shared.player.x + speed >= Const.Projection.width - Const.UI.playerUpWH().x) {
+      shared.player.x = Const.Projection.width - Const.UI.playerUpWH().x
+    } else {
+      shared.player.x += speed
+    }
+  }
 
   override def onActivate() = {
 

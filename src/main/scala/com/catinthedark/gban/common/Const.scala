@@ -16,7 +16,9 @@ object Const extends ConstDelegate {
     //    UI.enemyHedgeYRange, UI.enemyHedgeParallaxSpeed)
     UI.playerY,
     UI.playerUpWH,
-    UI.playerDownWH
+    UI.playerDownWH,
+    gamerSpeed,
+    gamerSlowSpeed
   )
 
   val debugEnabled = onOff("debug render", false)
@@ -43,14 +45,17 @@ object Const extends ConstDelegate {
   }
   
   object Projection {
-    val width = 1366
-    val height = 768
+    val width = 1366F
+    val height = 768F
     
-    def calcX(screenX: Int): Int = screenX * Const.Projection.width / Gdx.graphics.getWidth
-    def calcY(screenY: Int): Int = screenY * Const.Projection.height / Gdx.graphics.getHeight
+    def calcX(screenX: Int): Int = (screenX.toFloat * Const.Projection.width / Gdx.graphics.getWidth).toInt
+    def calcY(screenY: Int): Int = (screenY.toFloat * Const.Projection.height / Gdx.graphics.getHeight).toInt
   }
 
   val serverPullPort = 9000
   val serverPushPort = 9001
   val pollTimeout = 10
+  
+  val gamerSpeed = frange("speed x", 5F, Some(0), Some(50))
+  val gamerSlowSpeed = frange("slow speed x", 0.5F, Some(0), Some(20))
 }
