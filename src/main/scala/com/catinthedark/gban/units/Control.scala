@@ -17,6 +17,7 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with In
       override def keyDown(keycode: Int): Boolean = {
         if (keycode == Input.Keys.CONTROL_LEFT) {
           onSitStand(UP)
+          shared.shared0.networkControl.move(0, standUp = false)
         }
         true
       }
@@ -24,6 +25,7 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with In
       override def keyUp(keycode: Int): Boolean = {
         if (keycode == Input.Keys.CONTROL_LEFT) {
           onSitStand(DOWN)
+          shared.shared0.networkControl.move(0, standUp = true)
         }
         true
       }
