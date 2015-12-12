@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.catinthedark.gban.Assets
 import com.catinthedark.gban.common.Const
-import com.catinthedark.gban.view.{DOWN, UpDown, UP, ParallaxImage}
+import com.catinthedark.gban.view._
 import com.catinthedark.lib._
 import Magic.richifySpriteBatch
 
@@ -20,7 +20,9 @@ class View(val shared: Shared1) extends SimpleUnit {
   val batch = new SpriteBatch()
   val magicBatch = new MagicSpriteBatch(Const.debugEnabled())
 
-  def onSitStand(d: UpDown): Unit = {
+  val hud = new Hud(shared)
+
+  def onSitStand(d: State): Unit = {
     myHedge.go(d)
     ground.go(d)
     road.go(d)
@@ -79,14 +81,17 @@ class View(val shared: Shared1) extends SimpleUnit {
       myHedge.render(delta, batch, 0, Const.UI.myHedgeParallaxSpeed())
       ground.render(delta, batch, 0, Const.UI.groundParallaxSpeed())
     }
+
     magicBatch managed { batch =>
       magicBatch.drawWithDebug(
-        shared.player.texture,
+        shared.player.texture(delta),
         shared.player.rect, shared.player.rect)
     }
 
+    hud.render()
   }
 
   override def onExit() = {
+    hud.dispose()
   }
 }

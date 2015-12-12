@@ -60,4 +60,6 @@ trait NetworkControl extends Runnable {
   def iWon(): Unit = {
     buffer.add(s"$IWON_PREFIX:")
   }
+
+  def isServer: Boolean
 }

@@ -18,12 +18,22 @@ object Const extends ConstDelegate {
     UI.playerUpWH,
     UI.playerDownWH,
     gamerSpeed,
-    gamerSlowSpeed
+    gamerSlowSpeed,
+    //    UI.playerY,
+    //    UI.playerUpWH,
+    //    UI.playerDownWH,
+    HUD.myProgressPos,
+    HUD.enemyProgressPos,
+    HUD.progressWh,
+    HUD.myFragsPos,
+    HUD.enemyFragsPos
   )
 
   val debugEnabled = onOff("debug render", false)
 
   object UI {
+    val animationSpeed = 0.2f
+
     val skyYRange = vec2Range("sky parallax move", new Vector2(300, 600))
 
     val myHedgeYRange = vec2Range("myHedge parallax move", new Vector2(-31, 87))
@@ -42,14 +52,28 @@ object Const extends ConstDelegate {
     val playerY = frange("player y", 34, Some(0), Some(500))
     val playerUpWH = vec2Range("player up width height", new Vector2(200, 360))
     val playerDownWH = vec2Range("player down width height", new Vector2(200, 300))
+
   }
-  
+
+  object HUD {
+    val myProgressPos = vec2Range("my progress bar position", new Vector2(68, 578))
+    val enemyProgressPos = vec2Range("enemy progress bar position", new Vector2(600, 578))
+    val progressWh = vec2Range("player down width height", new Vector2(355, 30))
+    val myFragsPos = vec2Range("my frag pos", new Vector2(454, 613))
+    val enemyFragsPos = vec2Range("enemy frag pos", new Vector2(553, 613))
+  }
+
+
   object Projection {
     val width = 1161F
     val height = 652F
     
     def calcX(screenX: Int): Int = (screenX.toFloat * Const.Projection.width / Gdx.graphics.getWidth).toInt
     def calcY(screenY: Int): Int = (screenY.toFloat * Const.Projection.height / Gdx.graphics.getHeight).toInt
+  }
+
+  object Balance {
+    val maxProgress = 100
   }
 
   val serverPullPort = 9000
