@@ -7,7 +7,11 @@ import com.catinthedark.lib.constants.ConstDelegate
   * Created by over on 11.12.15.
   */
 object Const extends ConstDelegate {
-  override def delegate = Seq(UI.myHedgeYRange, UI.myHedgeParallaxSpeed, UI.groundYRange, UI.groundParallaxSpeed)
+  override def delegate = Seq(
+    UI.myHedgeYRange, UI.myHedgeParallaxSpeed,
+    UI.groundYRange, UI.groundParallaxSpeed,
+    UI.roadYRange, UI.roadParallaxSpeed,
+    UI.enemyHedgeYRange, UI.enemyHedgeParallaxSpeed)
   object UI {
     val skyYRange = vec2Range("sky parallax move", new Vector2(300, 600))
 
@@ -16,6 +20,12 @@ object Const extends ConstDelegate {
 
     val groundYRange = vec2Range("myHedge parallax move", new Vector2(-47, 0))
     val groundParallaxSpeed = frange("hedge parallax move", 800, Some(600), Some(1500f))
+
+    val roadYRange = vec2Range("road parallax move", new Vector2(257, 257))
+    val roadParallaxSpeed = frange("road parallax move", 800, Some(500), Some(1000))
+
+    val enemyHedgeYRange = vec2Range("enemy hedge parallax move", new Vector2(257, 257))
+    val enemyHedgeParallaxSpeed = frange("enemy hedge parallax move", 800, Some(500), Some(1000))
   }
 
   val serverPullPort = 9000

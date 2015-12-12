@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFont
 import com.catinthedark.gban.common.Const
 
 /**
- * Created by over on 13.12.14.
- */
+  * Created by over on 13.12.14.
+  */
 object Assets {
 
   object Textures {
@@ -25,6 +25,9 @@ object Assets {
 
     val myHedge = new Texture(Gdx.files.internal("textures/myHedge.gif"))
     val ground = new Texture(Gdx.files.internal("textures/myGround.gif"))
+
+    val road = new Texture(Gdx.files.internal("textures/road.gif"))
+    val enemyHedge = new Texture(Gdx.files.internal("textures/enemyHedge.gif"))
   }
 
   object Fonts {
