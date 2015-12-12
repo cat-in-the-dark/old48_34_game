@@ -46,8 +46,8 @@ object DesktopLauncher {
   def main(args: Array[String]) {
     val conf = new LwjglApplicationConfiguration
     conf.title = "Спаси и Сохрани Злую Бабку"
-    conf.height = 768
-    conf.width = 1366
+    conf.height = Const.Projection.height.toInt
+    conf.width = Const.Projection.width.toInt
     conf.x = 300
     conf.y = 0
 
