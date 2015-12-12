@@ -10,8 +10,10 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   val shared1 = new Shared1(shared0)
   val view = new View(shared1)
   val control = new Control(shared1) with LocalDeferred
+  var forceReload = false
 
-  control.onSitStand.ports += (view.onSitStand)
+  control.onSitStand.ports += view.onSitStand
+  control.onGameReload + (_ => forceReload = true)
 
   val children = Seq(view, control)
 
@@ -26,6 +28,11 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   override def run(delta: Float): Option[Boolean] = {
     children.foreach(_.run(delta))
 
-    None
+    if (forceReload) {
+      forceReload = false
+      Some(false)
+    } else {
+      None
+    }
   }
 }

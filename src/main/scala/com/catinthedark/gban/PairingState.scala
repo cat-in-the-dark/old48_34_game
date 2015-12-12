@@ -41,6 +41,7 @@ class PairingState(shared0: Shared0, name: String) extends Stub(name) with Textu
   override def run(delta: Float): Option[Unit] = {
     super.run(delta)
     if (hardSkip) {
+      hardSkip = false
       println("WARNING hard skip of network connection")
       return Some()
     }
