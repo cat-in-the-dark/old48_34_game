@@ -39,8 +39,8 @@ object Assets {
     val mainGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/main.ttf"))
     val moneyFontParam = new FreeTypeFontParameter()
     moneyFontParam.size = 44
-    val moneyFrontFont = mainGenerator.generateFont(moneyFontParam)
-    moneyFrontFont.setColor(167f / 255, 128f / 255, 183f / 255, 1)
+    val hudFont = mainGenerator.generateFont(moneyFontParam)
+    hudFont.setColor(167f / 255, 128f / 255, 183f / 255, 1)
   }
 
   object Animations {
