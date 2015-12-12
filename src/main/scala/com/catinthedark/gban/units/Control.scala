@@ -1,12 +1,36 @@
 package com.catinthedark.gban.units
 
 
+import com.badlogic.gdx.{Input, InputAdapter, Gdx}
+import com.catinthedark.gban.view.{DOWN, UP, Direction}
 import com.catinthedark.lib._
-import com.catinthedark.gban.Shared0
 
 /**
- * Created by over on 22.01.15.
- */
-abstract class Control(shared: Shared0) extends SimpleUnit with Deferred {
+  * Created by over on 22.01.15.
+  */
+abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with Interval {
+  val interval = 30f
+  val onSitStand = new Pipe[Direction]()
 
+  override def onActivate() = {
+    Gdx.input.setInputProcessor(new InputAdapter {
+      override def keyDown(keycode: Int): Boolean = {
+        if (keycode == Input.Keys.CONTROL_LEFT) {
+          onSitStand(UP)
+        }
+        true
+      }
+
+      override def keyUp(keycode: Int): Boolean = {
+        if (keycode == Input.Keys.CONTROL_LEFT) {
+          onSitStand(DOWN)
+        }
+        true
+      }
+    })
+  }
+
+  override def run(delta: Float): Unit = super.run(delta)
+
+  override def onExit(): Unit = Gdx.input.setInputProcessor(null)
 }
