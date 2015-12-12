@@ -6,11 +6,13 @@ import org.zeromq.{ZContext, ZMQ}
 
 class NetworkClientControl(serverAddress: String) extends NetworkControl {
   override def run(): Unit = {
+    println(s"Start connecting to $serverAddress")
     val ctx = new ZContext()
     val pullSocket = ctx.createSocket(ZMQ.PULL)
     val pushSocket = ctx.createSocket(ZMQ.PUSH)
     pullSocket.connect(s"tcp://$serverAddress:${Const.serverPushPort}")
     pushSocket.connect(s"tcp://$serverAddress:${Const.serverPullPort}")
+    println(s"Connected to $serverAddress")
     pushSocket.send(s"$HELLO_PREFIX:")
     isConnected = Some()
 
@@ -20,6 +22,7 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
       ZMQ.poll(pollItems, Const.pollTimeout)
       if (pollItems(0).isReadable) {
         val rawData = pullSocket.recvStr()
+        println(s"Received data from server $rawData")
         val data = rawData.split(":")
 
         data(0) match {

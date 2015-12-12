@@ -7,6 +7,7 @@ import org.zeromq.{ZMQ, ZContext}
 class NetworkServerControl extends NetworkControl {
 
   override def run(): Unit = {
+    println("Start listening")
     val ctx = new ZContext()
     val pullSocket = ctx.createSocket(ZMQ.PULL)
     val pushSocket = ctx.createSocket(ZMQ.PUSH)
@@ -19,6 +20,7 @@ class NetworkServerControl extends NetworkControl {
       ZMQ.poll(pollItems, Const.pollTimeout)
       if (pollItems(0).isReadable) {
         val rawData = pullSocket.recvStr()
+        println(s"Received data from client $rawData")
         val data = rawData.split(":")
 
         data(0) match {
