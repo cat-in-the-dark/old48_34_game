@@ -24,8 +24,8 @@ object Const extends ConstDelegate {
     val roadYRange = vec2Range("road parallax move", new Vector2(257, 257))
     val roadParallaxSpeed = frange("road parallax move", 800, Some(500), Some(1000))
 
-    val enemyHedgeYRange = vec2Range("enemy hedge parallax move", new Vector2(257, 257))
-    val enemyHedgeParallaxSpeed = frange("enemy hedge parallax move", 800, Some(500), Some(1000))
+    val enemyHedgeYRange = vec2Range("enemy hedge parallax move", new Vector2(247, 290))
+    val enemyHedgeParallaxSpeed = frange("enemy hedge parallax move", 500, Some(500), Some(1000))
   }
 
   val serverPullPort = 9000
