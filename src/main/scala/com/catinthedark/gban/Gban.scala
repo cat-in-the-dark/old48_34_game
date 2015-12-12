@@ -12,7 +12,7 @@ import scala.util.Random
 /**
   * Created by over on 13.12.14.
   */
-class Gban extends Game {
+class Gban(address: String) extends Game {
   val rm = new RouteMachine()
 
   def keyAwait(name: String, tex: Texture, key: Int = Input.Keys.ENTER) =
@@ -37,9 +37,10 @@ class Gban extends Game {
     val t3 = keyAwait("Tutorial3", Assets.Textures.t3)
     val t4 = keyAwait("Tutorial4", Assets.Textures.t4)
 
-    val shared: Shared0 = new Shared0
+    val shared: Shared0 = new Shared0(address)
 
-    val pairing = new PairingState(shared)
+    val pairing = new PairingState(shared, "Pairing")
+    
     val game = new GameState(shared)
     val gameOver = new GameOverState(shared)
     val gameWin = keyAwait("GameWin", Assets.Textures.gameWin)

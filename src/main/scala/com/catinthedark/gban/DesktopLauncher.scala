@@ -51,7 +51,14 @@ object DesktopLauncher {
     conf.x = 300
     conf.y = 0
 
-
+    val address = if (args.length > 0) {
+      println(s"Would be connected to ${args(0)} if can")
+      args(0)
+    } else {
+      println("Start as server")
+      null
+    }
+    
 
     new Thread(new Runnable {
       override def run(): Unit = {
@@ -59,6 +66,6 @@ object DesktopLauncher {
       }
     }).start()
 
-    val game = new LwjglApplication(new Gban, conf)
+    val game = new LwjglApplication(new Gban(address), conf)
   }
 }

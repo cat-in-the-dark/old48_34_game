@@ -13,5 +13,6 @@ libraryDependencies ++= Seq(
   "com.badlogicgames.gdx" % "gdx-backend-lwjgl" % "1.4.1",
   "com.badlogicgames.gdx" % "gdx-platform" % "1.4.1" classifier "natives-desktop",
   "com.badlogicgames.gdx" % "gdx-freetype" % "1.4.1",
-  "com.badlogicgames.gdx" % "gdx-freetype-platform" % "1.4.1" classifier "natives-desktop"
+  "com.badlogicgames.gdx" % "gdx-freetype-platform" % "1.4.1" classifier "natives-desktop",
+  "org.zeromq" % "jeromq" % "0.3.5"
 )

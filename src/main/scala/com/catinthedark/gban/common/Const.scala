@@ -17,4 +17,8 @@ object Const extends ConstDelegate {
     val groundYRange = vec2Range("myHedge parallax move", new Vector2(-47, 0))
     val groundParallaxSpeed = frange("hedge parallax move", 800, Some(600), Some(1500f))
   }
+
+  val serverPullPort = 9000
+  val serverPushPort = 9001
+  val pollTimeout = 10
 }

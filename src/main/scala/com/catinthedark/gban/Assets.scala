@@ -19,6 +19,7 @@ object Assets {
     val t2 = new Texture(Gdx.files.internal("textures/tutor_1.gif"))
     val t3 = new Texture(Gdx.files.internal("textures/tutor_2.gif"))
     val t4 = new Texture(Gdx.files.internal("textures/tutor_3.gif"))
+    val paring = new Texture(Gdx.files.internal("textures/pairing.png"))
     val gameOver = new Texture(Gdx.files.internal("textures/gameover.gif"))
     val gameWin = new Texture(Gdx.files.internal("textures/gamewin.gif"))
 
