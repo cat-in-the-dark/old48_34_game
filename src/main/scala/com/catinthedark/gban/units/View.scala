@@ -31,6 +31,9 @@ class View(val shared: Shared1) extends SimpleUnit {
 
   val hud = new Hud(shared)
 
+  var enemyKilledPos: Float = 0
+  var enemyHatHeight: Float = 0
+
   def onPlayerStateChanged(d: State): Unit = {
     enemyBack.go(d)
     myHedge.go(d)
@@ -55,6 +58,8 @@ class View(val shared: Shared1) extends SimpleUnit {
     }
     if (amIExactly) {
       shared.player.frags += 1
+      enemyKilledPos = shared.enemy.rect.x
+      enemyHatHeight = shared.enemy.rect.y
       shared.enemy.state = KILLED
     }
     println(s"I shoot $point in the ${shared.enemy.physRect} and amIExactly: $amIExactly")
@@ -126,6 +131,15 @@ class View(val shared: Shared1) extends SimpleUnit {
       myHedge.render(delta, batch, 0, Const.UI.myHedgeParallaxSpeed())
       ground.render(delta, batch, 0, Const.UI.groundParallaxSpeed())
       batch.draw(Assets.Textures.waterPump, Const.UI.pumpPosition().x, Const.UI.pumpPosition().y)
+
+      if (shared.enemy.state == KILLED) {
+        enemyHatHeight += delta * Const.UI.hatSpeed
+        if (shared.shared0.networkControl.isServer) {
+          batch.draw(Assets.Textures.uglyHat, enemyKilledPos, enemyHatHeight)
+        } else {
+          batch.draw(Assets.Textures.goodHat, enemyKilledPos, enemyHatHeight)
+        }
+      }
     }
 
     magicBatch managed { batch =>
