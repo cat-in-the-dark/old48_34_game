@@ -72,6 +72,7 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
       pushSocket.send(s"$IWON_PREFIX:")
     }
 
+    buffer.clear()
     pullSocket.close()
     pushSocket.close()
     isConnected = None
