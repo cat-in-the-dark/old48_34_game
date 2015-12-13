@@ -43,20 +43,13 @@ class Hud(shared: Shared1) {
       Assets.Fonts.hudFont.draw(batch, shared.enemy.frags.toString,
         Const.HUD.enemyFragsPos().x, Const.HUD.enemyFragsPos().y)
 
-      println(s"px = ${player.x}")
-      println(s"plant pos = ${Const.UI.plantPos().x}")
-
       if (player.water != 0 &&
-//        player.state == DOWN &&
         player.x + Const.UI.playerDownWH().x >= (Const.UI.plantPos().x - Const.UI.pumpEpsilon())) {
-        println("ctrl 2")
         Assets.Fonts.ctrlFont.draw(batch, "press ctrl", Const.HUD.ctrl2Pos().x, Const.HUD.ctrl2Pos().y)
       }
 
       if (player.water != Const.Balance.bucketVolume &&
-//        player.state == DOWN &&
         player.x < Const.UI.playerMinX() + Const.UI.pumpEpsilon()) {
-        println("ctrl1 ")
         Assets.Fonts.ctrlFont.draw(batch, "press ctrl", Const.HUD.ctrl1Pos().x,Const.HUD.ctrl1Pos().y)
       }
     }

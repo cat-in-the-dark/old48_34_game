@@ -61,7 +61,7 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred {
                 shared.player.coolDown = true
                 defer(Balance.playerCooldown, () => shared.player.state = UP)
                 defer(Balance.weaponCooldown, () => shared.player.coolDown = false)
-                onShoot(new Point(screenX, Const.Projection.height.toInt - screenY))
+                onShoot(new Point(x, Const.Projection.height.toInt - y))
               }
             case _ =>
           }
