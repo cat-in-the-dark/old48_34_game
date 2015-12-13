@@ -93,6 +93,7 @@ object Const extends ConstDelegate {
     val maxProgress = 1000
     val bucketVolume = 100
     val waterSpeed = irange("water speed", 5, Some(1), Some(20))
+    val playerCooldown: Float = 0.5f
   }
 
   val serverPullPort = 9000

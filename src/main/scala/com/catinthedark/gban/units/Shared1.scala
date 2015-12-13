@@ -9,7 +9,7 @@ import com.catinthedark.gban.{Assets, Shared0}
 class Shared1(val shared0: Shared0) {
   val (player, enemy) =
     if (shared0.networkControl.isServer)
-      (Player(Const.UI.playerMinX(), UP, 0, Assets.Animations.goodAnimations), Enemy(0, UP, 0, Assets.Animations.goodAnimations))
+      (Player(Const.UI.playerMinX(), UP, 0, Assets.Animations.goodAnimations), Enemy(Const.UI.playerMinX(), UP, 0, Assets.Animations.uglyAnimations))
     else
-      (Player(Const.UI.playerMinX(), UP, 0, Assets.Animations.goodAnimations), Enemy(0, UP, 0, Assets.Animations.goodAnimations))
+      (Player(Const.UI.playerMinX(), UP, 0, Assets.Animations.uglyAnimations), Enemy(Const.UI.playerMinX(), UP, 0, Assets.Animations.goodAnimations))
 }

@@ -35,7 +35,7 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
             onShoot(exactly)
           case ILOOSE_PREFIX => onILoose()
           case IWON_PREFIX => onIWon()
-          case HELLO_PREFIX => 
+          case HELLO_PREFIX =>
             println(s"Connected to $serverAddress")
             isConnected = Some()
           case _ => println(s"UPS, wrong prefix $rawData")
