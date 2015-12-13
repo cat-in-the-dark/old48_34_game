@@ -33,8 +33,6 @@ object Assets {
 
     val goodFrames = TextureRegion.split(
       new Texture(Gdx.files.internal("textures/player_good.png")), 200, 360)
-    val goodUp = goodFrames(0)(0)
-    val goodDown = goodFrames(0)(1)
 
     val uglyFrames = TextureRegion.split(
       new Texture(Gdx.files.internal("textures/player_ugly.png")), 200, 360)
@@ -74,11 +72,16 @@ object Assets {
       new Animation(speed, array, Animation.PlayMode.NORMAL)
     }
     trait PlayerAnimationPack {
+      val up: TextureRegion
+      val down: TextureRegion
       val shooting: Animation
       val running: Animation
       val crawling: Animation
     }
     object goodAnimations extends PlayerAnimationPack {
+      val up: TextureRegion = Textures.goodFrames(0)(0)
+
+      val down: TextureRegion = Textures.goodFrames(0)(1)
 
       val shooting = normalAnimation(Const.UI.animationSpeed, Textures.goodFrames,
         (0, 0), (0, 2), (0, 0))
@@ -91,6 +94,9 @@ object Assets {
     }
 
     object uglyAnimations extends PlayerAnimationPack {
+      val up: TextureRegion = Textures.uglyFrames(0)(0)
+
+      val down: TextureRegion = Textures.uglyFrames(0)(1)
 
       val shooting = normalAnimation(Const.UI.animationSpeed, Textures.uglyFrames,
         (0, 0), (0, 2), (0, 0))

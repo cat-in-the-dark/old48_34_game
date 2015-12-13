@@ -15,11 +15,11 @@ case class Player(var x: Float, var state: State, var frags: Int, pack: PlayerAn
 
   def texture (delta: Float) = {
     state match {
-      case UP => Assets.Textures.goodUp
+      case UP => pack.up
       case SHOOTING =>
         animationCounter += delta
         pack.shooting.getKeyFrame(animationCounter)
-      case DOWN => Assets.Textures.goodDown
+      case DOWN => pack.down
       case RUNNING =>
         animationCounter += delta
         pack.running.getKeyFrame(animationCounter)
@@ -31,9 +31,9 @@ case class Player(var x: Float, var state: State, var frags: Int, pack: PlayerAn
 
   def rect: Rectangle = {
     state match {
-      case UP =>
+      case UP | SHOOTING | RUNNING =>
         new Rectangle(x, Const.UI.playerY(), Const.UI.playerUpWH().x, Const.UI.playerUpWH().y)
-      case DOWN =>
+      case DOWN | CRAWLING =>
         new Rectangle(x, Const.UI.playerY(), Const.UI.playerDownWH().x, Const.UI.playerDownWH().y)
     }
   }
