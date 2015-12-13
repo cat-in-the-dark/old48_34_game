@@ -23,36 +23,41 @@ class View(val shared: Shared1) extends SimpleUnit {
 
   val hud = new Hud(shared)
 
-  def onSitStand(d: State): Unit = {
+  def onPlayerStateChanged(d: State): Unit = {
     enemyBack.go(d)
     myHedge.go(d)
     ground.go(d)
     road.go(d)
     enemyHedge.go(d)
     shared.player.state = d
+    shared.player.animationCounter = 0
     shared.shared0.networkControl.move(shared.player.x, standUp = d == UP)
   }
 
   def onMoveLeft(u: Unit): Unit = {
-    if (shared.player.state == UP) {
-      moveLeft(Const.gamerSpeed())
-      shared.shared0.networkControl.move(shared.player.x, standUp = true)
-    } else {
-      moveLeft(Const.gamerSlowSpeed())
+    shared.player.state match {
+      case UP | RUNNING =>
+        moveLeft(Const.gamerSpeed())
+        shared.shared0.networkControl.move(shared.player.x, standUp = true)
+      case DOWN | CRAWLING =>
+        moveLeft(Const.gamerSlowSpeed())
+      case _ =>
     }
   }
 
   def onMoveRight(u: Unit): Unit = {
-    if (shared.player.state == UP) {
-      moveRight(Const.gamerSpeed())
-      shared.shared0.networkControl.move(shared.player.x, standUp = true)
-    } else {
-      moveRight(Const.gamerSlowSpeed())
+    shared.player.state match {
+      case UP | RUNNING =>
+        moveRight(Const.gamerSpeed())
+        shared.shared0.networkControl.move(shared.player.x, standUp = true)
+      case DOWN | CRAWLING =>
+        moveRight(Const.gamerSlowSpeed())
+      case _ =>
     }
   }
   
   def moveLeft(speed: Float): Unit = {
-    println(shared.player.x, Const.UI.playerUpWH().x)
+//    println(shared.player.x, Const.UI.playerUpWH().x)
     if (shared.player.x - speed <= Const.UI.playerMinX()) {
       shared.player.x = Const.UI.playerMinX()
     } else {
@@ -61,7 +66,7 @@ class View(val shared: Shared1) extends SimpleUnit {
   }
   
   def moveRight(speed: Float): Unit = {
-    println(shared.player.x, Const.UI.playerUpWH().x)
+//    println(shared.player.x, Const.UI.playerUpWH().x)
     if (shared.player.x + speed >= Const.Projection.width - Const.UI.playerUpWH().x) {
       shared.player.x = Const.Projection.width - Const.UI.playerUpWH().x
     } else {
