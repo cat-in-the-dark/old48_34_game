@@ -1,5 +1,6 @@
 package com.catinthedark.gban
 
+import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.units._
 import com.catinthedark.lib.{Interval, LocalDeferred, YieldUnit}
 
@@ -14,6 +15,10 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   val waterControl = new WaterControl(shared1) with Interval {
     val interval = 0.2f
   }
+  val progressDown = new ProgressDown(shared1) with Interval {
+    val interval = 0.5f
+  }
+
   var forceReload = false
   var iLoose = false
   var iWon = false
@@ -50,7 +55,7 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   shared0.networkControl.onILoose.ports += onILoose
   shared0.networkControl.onIWon.ports += onIWon
 
-  val children = Seq(view, enemyView, control, waterControl)
+  val children = Seq(view, enemyView, control, waterControl, progressDown)
 
   override def onActivate(): Unit = {
     children.foreach(_.onActivate())
@@ -72,6 +77,12 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
     } else if (iWon) {
       iWon = false
       Some(true)
+    } else if(shared1.player.progress >= Const.Balance.maxProgress){
+      shared0.networkControl.iLoose()
+      Some(true)
+    }else if(shared1.player.progress <= 0){
+      shared0.networkControl.iWon()
+      Some(false)
     } else {
       None
     }
