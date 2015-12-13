@@ -28,10 +28,13 @@ class NetworkServerControl extends NetworkControl {
             val attrs = data(1).split(";")
             val x = attrs(0).toFloat
             val standUp = attrs(1).toBoolean
-            moveListener(x, standUp)
-          case SHOOT_PREFIX => shootListener()
-          case ILOOSE_PREFIX => iLooseListener()
-          case IWON_PREFIX => iWonListener()
+            onMove(x, standUp)
+          case SHOOT_PREFIX =>
+            val attrs = data(1).split(";")
+            val exactly = attrs(0).toBoolean
+            onShoot(exactly)
+          case ILOOSE_PREFIX => onILoose()
+          case IWON_PREFIX => onIWon()
           case HELLO_PREFIX =>
             pushSocket.send(s"$HELLO_PREFIX:")
             isConnected = Some()

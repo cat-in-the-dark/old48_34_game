@@ -1,6 +1,6 @@
 package com.catinthedark.gban
 
-import com.catinthedark.gban.units.{WaterControl, Control, Shared1, View}
+import com.catinthedark.gban.units._
 import com.catinthedark.lib.{Interval, LocalDeferred, YieldUnit}
 
 /**
@@ -9,6 +9,7 @@ import com.catinthedark.lib.{Interval, LocalDeferred, YieldUnit}
 class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   val shared1 = new Shared1(shared0)
   val view = new View(shared1)
+  val enemyView = new EnemyView(shared1)
   val control = new Control(shared1) with LocalDeferred
   val waterControl = new WaterControl(shared1) with Interval {
     val interval = 0.2f
@@ -19,8 +20,11 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   control.onMoveLeft.ports += view.onMoveLeft
   control.onMoveRight.ports += view.onMoveRight
   control.onGameReload + (_ => forceReload = true)
+  
+  shared0.networkControl.onMove.ports += enemyView.onMove
+  shared0.networkControl.onShoot.ports += enemyView.onShoot
 
-  val children = Seq(view, control, waterControl)
+  val children = Seq(view, enemyView, control, waterControl)
 
   override def onActivate(): Unit = {
     children.foreach(_.onActivate())

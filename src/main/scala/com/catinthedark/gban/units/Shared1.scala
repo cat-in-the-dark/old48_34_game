@@ -1,10 +1,9 @@
 package com.catinthedark.gban.units
 
 import com.catinthedark.gban.common.Const
-import com.catinthedark.gban.{Assets, Shared0}
 import com.catinthedark.gban.entity.{Enemy, Player}
-import com.catinthedark.gban.network.NetworkServerControl
 import com.catinthedark.gban.view.UP
+import com.catinthedark.gban.{Assets, Shared0}
 
 
 class Shared1(val shared0: Shared0) {
