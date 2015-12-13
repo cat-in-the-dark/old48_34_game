@@ -76,7 +76,7 @@ object Assets {
       val running: Animation
       val crawling: Animation
     }
-    object goodAnimations extends PlayerAnimationPack{
+    object goodAnimations extends PlayerAnimationPack {
 
       val shooting = normalAnimation(Const.UI.animationSpeed, Textures.goodFrames,
         (0, 0), (0, 2), (0, 0))
@@ -88,7 +88,7 @@ object Assets {
         (0, 1), (0, 5), (0, 6))
     }
 
-    object uglyAnimations extends PlayerAnimationPack{
+    object uglyAnimations extends PlayerAnimationPack {
 
       val shooting = normalAnimation(Const.UI.animationSpeed, Textures.uglyFrames,
         (0, 0), (0, 2), (0, 0))
@@ -112,6 +112,9 @@ object Assets {
 
     val bgmCool = Gdx.audio.newMusic(Gdx.files.internal("sound/bgm_cool.mp3"))
     bgmCool.setLooping(true)
+
+    val waterIn = Gdx.audio.newMusic(Gdx.files.internal("sound/water_in.mp3"))
+    waterIn.setLooping(false)
 
   }
 
