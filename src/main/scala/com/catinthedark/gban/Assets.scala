@@ -82,6 +82,13 @@ object Assets {
     val uglyHat = new Texture(Gdx.files.internal("textures/hat_ugly.png"))
 
     val waterPump = new Texture(Gdx.files.internal("textures/water_pump.gif"))
+    val corn = Array(new Texture(Gdx.files.internal("textures/corn1.gif")),
+      new Texture(Gdx.files.internal("textures/corn2.gif")),
+      new Texture(Gdx.files.internal("textures/corn3.gif")))
+
+    val upbarGood = new Texture(Gdx.files.internal("textures/upbar_good.gif"))
+    val upbarUgly = new Texture(Gdx.files.internal("textures/upbar_ugly.gif"))
+    val waterbat = new Texture(Gdx.files.internal("textures/waterbar.gif"))
   }
 
   object Fonts {
@@ -89,7 +96,7 @@ object Assets {
     val moneyFontParam = new FreeTypeFontParameter()
     moneyFontParam.size = 44
     val hudFont = mainGenerator.generateFont(moneyFontParam)
-    hudFont.setColor(167f / 255, 128f / 255, 183f / 255, 1)
+    hudFont.setColor(92f / 255, 85f / 255, 103f / 255, 1)
   }
 
   object Animations {

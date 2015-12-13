@@ -26,12 +26,19 @@ class Hud(shared: Shared1) {
     val player = shared.player
 
     shapeRender.begin(ShapeType.Filled)
+    shapeRender.setColor(0.1f, 0.48f, 0.83f, 1)
     barMyProgress.render(shapeRender, player.progress, Const.HUD.myProgressPos(), Const.HUD.progressWh())
     barEnemyProgress.render(shapeRender, shared.enemy.progress, Const.HUD.enemyProgressPos(), Const.HUD.progressWh())
     barWater.render(shapeRender, player.water, Const.HUD.waterBarPos(), Const.HUD.waterBarWh())
     shapeRender.end()
 
     batch managed { batch =>
+      batch.draw(if (shared.shared0.networkControl.isServer)
+        Assets.Textures.upbarGood
+      else Assets.Textures.upbarUgly, Const.UI.upbarPos().x, Const.UI.upbarPos().y)
+
+      batch.draw(Assets.Textures.waterbat, Const.UI.waterbarPos().x, Const.UI.waterbarPos().y)
+
       Assets.Fonts.hudFont.draw(batch, player.frags.toString, Const.HUD.myFragsPos().x, Const.HUD.myFragsPos().y)
       Assets.Fonts.hudFont.draw(batch, shared.enemy.frags.toString,
         Const.HUD.enemyFragsPos().x, Const.HUD.enemyFragsPos().y)

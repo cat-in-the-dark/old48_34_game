@@ -7,7 +7,7 @@ import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.view._
 
 case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack,
-                 var progress: Int = 0) {
+                 var progress: Int = Const.Balance.initialProgress) {
   var animationCounter = 0f
   
   def texture (delta: Float) = {
