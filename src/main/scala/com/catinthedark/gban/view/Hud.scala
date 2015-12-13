@@ -26,8 +26,8 @@ class Hud(shared: Shared1) {
     val player = shared.player
 
     shapeRender.begin(ShapeType.Filled)
-    barMyProgress.render(shapeRender, Const.Balance.maxProgress, Const.HUD.myProgressPos(), Const.HUD.progressWh())
-    barMyProgress.render(shapeRender, Const.Balance.maxProgress, Const.HUD.enemyProgressPos(), Const.HUD.progressWh())
+    barMyProgress.render(shapeRender, player.progress, Const.HUD.myProgressPos(), Const.HUD.progressWh())
+    barEnemyProgress.render(shapeRender, shared.enemy.progress, Const.HUD.enemyProgressPos(), Const.HUD.progressWh())
     barWater.render(shapeRender, player.water, Const.HUD.waterBarPos(), Const.HUD.waterBarWh())
     shapeRender.end()
 

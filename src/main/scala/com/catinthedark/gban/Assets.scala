@@ -49,6 +49,10 @@ object Assets {
     val enemyUgly = enemyUglyFrames(0)(0)
 
     val waterPump = new Texture(Gdx.files.internal("textures/water_pump.gif"))
+
+    val corn = Array(new Texture(Gdx.files.internal("textures/corn1.gif")),
+      new Texture(Gdx.files.internal("textures/corn2.gif")),
+      new Texture(Gdx.files.internal("textures/corn3.gif")))
   }
 
   object Fonts {
@@ -134,6 +138,9 @@ object Assets {
 
     val waterIn = Gdx.audio.newMusic(Gdx.files.internal("sound/water_in.mp3"))
     waterIn.setLooping(false)
+    val waterOut = Gdx.audio.newMusic(Gdx.files.internal("sound/voda_iz_vedra.mp3"))
+    waterOut.setVolume(2)
+    waterOut.setLooping(true)
 
   }
 

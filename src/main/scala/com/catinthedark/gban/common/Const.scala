@@ -34,7 +34,8 @@ object Const extends ConstDelegate {
     UI.pumpPosition,
     HUD.waterBarPos,
     HUD.waterBarWh,
-    UI.enemyY
+    UI.enemyY,
+    UI.plantPos
   )
 
   val debugEnabled = onOff("debug render", false)
@@ -57,7 +58,7 @@ object Const extends ConstDelegate {
     val roadParallaxSpeed = frange("road parallax move", 800, Some(500), Some(1000))
 
     val enemyHedgeYRange = vec2Range("enemy hedge parallax move", new Vector2(247, 290))
-    val enemyHedgeParallaxSpeed = frange("enemy hedge parallax move", 500, Some(500), Some(1000))
+    val enemyHedgeParallaxSpeed = frange("enemy hedge parallax move", 720, Some(500), Some(1000))
 
 
     val playerY = frange("player y", 34, Some(0), Some(500))
@@ -70,7 +71,10 @@ object Const extends ConstDelegate {
     val enemyDownWH = vec2Range("enemy down width height", new Vector2(80, 96))
     
     val pumpPosition = vec2Range("pump position", new Vector2(58, 14))
-    val pumpEpsilon = frange("pump position", 10, Some(0), Some(50))
+    val pumpEpsilon = frange("pump epsilon", 10, Some(0), Some(50))
+
+    val plantPos = vec2Range("plant pos", new Vector2(900, 9))
+    val plantEpsilon = frange("plant epsilon", 10, Some(0), Some(50))
 
   }
 
@@ -100,10 +104,12 @@ object Const extends ConstDelegate {
   }
 
   object Balance {
-    val maxProgress = 1000
+    val progressLevels = 3
+    val maxProgress = 200
     val bucketVolume = 100
-    val waterSpeed = irange("water speed", 5, Some(1), Some(20))
     val playerCooldown: Float = 0.5f
+    val waterSpeed = irange("water in speed", 5, Some(1), Some(20))
+    val waterOutSpeed = irange("water out speed", 20, Some(1), Some(50))
   }
 
   val serverPullPort = 9000

@@ -6,7 +6,8 @@ import com.catinthedark.gban.Assets.Animations.PlayerAnimationPack
 import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.view._
 
-case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack) {
+case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack,
+                 var progress: Int = 0) {
   var animationCounter = 0f
   
   def texture (delta: Float) = {
@@ -34,7 +35,8 @@ case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAni
     }
   }
 }
-case class Player(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack, var water: Int = 0) {
+case class Player(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack, var water: Int = 0,
+                 var progress: Int = 0, var progressLevel: Int = 0) {
 
   var animationCounter = 0f
 

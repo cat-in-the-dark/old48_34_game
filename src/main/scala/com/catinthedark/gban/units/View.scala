@@ -55,7 +55,7 @@ class View(val shared: Shared1) extends SimpleUnit {
       case _ =>
     }
   }
-  
+
   def moveLeft(speed: Float): Unit = {
 //    println(shared.player.x, Const.UI.playerUpWH().x)
     if (shared.player.x - speed <= Const.UI.playerMinX()) {
@@ -64,7 +64,7 @@ class View(val shared: Shared1) extends SimpleUnit {
       shared.player.x -= speed
     }
   }
-  
+
   def moveRight(speed: Float): Unit = {
 //    println(shared.player.x, Const.UI.playerUpWH().x)
     if (shared.player.x + speed >= Const.Projection.width - Const.UI.playerUpWH().x) {
@@ -96,6 +96,11 @@ class View(val shared: Shared1) extends SimpleUnit {
       magicBatch.drawWithDebug(
         shared.player.texture(delta),
         shared.player.rect, shared.player.rect)
+    }
+
+    batch managed { render =>
+      //batch.draw(Assets.Textures.corn(0), Const.UI.plantPos().x + 20, Const.UI.plantPos().y + 10)
+      batch.draw(Assets.Textures.corn(shared.player.progressLevel), Const.UI.plantPos().x, Const.UI.plantPos().y)
     }
 
     hud.render()
