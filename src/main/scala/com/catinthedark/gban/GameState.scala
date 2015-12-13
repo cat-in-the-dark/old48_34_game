@@ -20,6 +20,7 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   control.onMoveLeft.ports += view.onMoveLeft
   control.onMoveRight.ports += view.onMoveRight
   control.onGameReload + (_ => forceReload = true)
+  control.onShoot.ports += view.onShoot
   
   shared0.networkControl.onMove.ports += enemyView.onMove
   shared0.networkControl.onShoot.ports += enemyView.onShoot

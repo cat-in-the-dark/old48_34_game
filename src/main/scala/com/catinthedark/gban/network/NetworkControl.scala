@@ -24,8 +24,8 @@ trait NetworkControl extends Runnable {
     buffer.add(s"$MOVE_PREFIX:$x;$standUp")
   }
   
-  def shoot(): Unit = {
-    buffer.add(s"$SHOOT_PREFIX:")
+  def shoot(exactly: Boolean): Unit = {
+    buffer.add(s"$SHOOT_PREFIX:$exactly")
   }
   
   def iLoose(): Unit = {

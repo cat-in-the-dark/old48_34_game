@@ -29,6 +29,7 @@ class EnemyView(val shared: Shared1) extends SimpleUnit {
             shared.enemy.texture(delta),
             shared.enemy.rect, shared.enemy.rect)
         }
+      case DOWN => //don't draw enemy
       case _ => println(s"Don't draw enemy state ${shared.enemy.state}")
     }
     

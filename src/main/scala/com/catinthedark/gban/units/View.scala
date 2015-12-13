@@ -8,6 +8,7 @@ import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.view._
 import com.catinthedark.lib._
 import Magic.richifySpriteBatch
+import org.lwjgl.util.Point
 
 /**
   * Created by over on 02.01.15.
@@ -31,7 +32,17 @@ class View(val shared: Shared1) extends SimpleUnit {
     enemyHedge.go(d)
     shared.player.state = d
     shared.player.animationCounter = 0
-    shared.shared0.networkControl.move(shared.player.x, standUp = d == UP)
+    d match {
+      case DOWN | CRAWLING => shared.shared0.networkControl.move(shared.player.x, standUp = false)
+      case UP | RUNNING => shared.shared0.networkControl.move(shared.player.x, standUp = true)
+      case _ => println(s"Handle this later or never $d")
+    }
+  }
+  
+  def onShoot(point: Point): Unit = {
+    println(s"I shoot in $point")
+    val amIExactly = false
+    shared.shared0.networkControl.shoot(amIExactly)
   }
 
   def onMoveLeft(u: Unit): Unit = {
