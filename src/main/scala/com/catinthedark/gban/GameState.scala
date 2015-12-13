@@ -63,6 +63,7 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
 
   override def onExit(): Unit = {
     children.foreach(_.onExit())
+    shared1.reset()
   }
 
   override def run(delta: Float): Option[Boolean] = {
