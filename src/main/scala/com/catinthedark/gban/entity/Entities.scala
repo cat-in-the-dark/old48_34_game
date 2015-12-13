@@ -28,9 +28,9 @@ case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAni
   def rect: Rectangle = {
     state match {
       case UP =>
-        new Rectangle(x, Const.UI.playerY(), Const.UI.playerUpWH().x, Const.UI.playerUpWH().y)
+        new Rectangle(x, Const.UI.enemyY(), Const.UI.enemyUpWH().x, Const.UI.enemyUpWH().y)
       case DOWN =>
-        new Rectangle(x, Const.UI.playerY(), Const.UI.playerDownWH().x, Const.UI.playerDownWH().y)
+        new Rectangle(x, Const.UI.enemyY(), Const.UI.enemyDownWH().x, Const.UI.enemyDownWH().y)
     }
   }
 }

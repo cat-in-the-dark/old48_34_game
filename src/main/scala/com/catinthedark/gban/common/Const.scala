@@ -33,7 +33,8 @@ object Const extends ConstDelegate {
 //    HUD.enemyFragsPos,
     UI.pumpPosition,
     HUD.waterBarPos,
-    HUD.waterBarWh
+    HUD.waterBarWh,
+    UI.enemyY
   )
 
   val debugEnabled = onOff("debug render", false)
@@ -63,7 +64,11 @@ object Const extends ConstDelegate {
     val playerMinX = frange("player min x", 100, Some(0), Some(500))
     val playerUpWH = vec2Range("player up width height", new Vector2(200, 360))
     val playerDownWH = vec2Range("player down width height", new Vector2(200, 300))
-
+    
+    val enemyY = frange("enemy y", 415, Some(100), Some(652))
+    val enemyUpWH = vec2Range("enemy up width height", new Vector2(80, 96))
+    val enemyDownWH = vec2Range("enemy down width height", new Vector2(80, 96))
+    
     val pumpPosition = vec2Range("pump position", new Vector2(58, 14))
     val pumpEpsilon = frange("pump position", 10, Some(0), Some(50))
 

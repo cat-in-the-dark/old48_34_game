@@ -107,12 +107,23 @@ object Assets {
       val crawling = loopingAnimation(Textures.uglyFrames,
         (0, 1), (0, 5), (0, 6))
     }
-
-    val enemyGoodShooting = normalAnimation(Const.UI.animationSpeed, Textures.enemyGoodFrames,
-      (0, 0), (0, 1), (0, 0))
-
-    val enemyUglyShooting = normalAnimation(Const.UI.animationSpeed, Textures.enemyUglyFrames,
-      (0, 0), (0, 1), (0, 0))
+    
+    object uglyEnemyAnimations extends PlayerAnimationPack {
+      val up = Textures.enemyUgly
+      val shooting = normalAnimation(Const.UI.animationSpeed, Textures.enemyUglyFrames,
+        (0, 0), (0, 1), (0, 0))
+      val down: TextureRegion = null
+      val running: Animation = null
+      val crawling: Animation = null
+    }
+    object goodEnemyAnimations extends PlayerAnimationPack {
+      val up = Textures.enemyGood
+      val shooting = normalAnimation(Const.UI.animationSpeed, Textures.enemyGoodFrames,
+        (0, 0), (0, 1), (0, 0))
+      val down: TextureRegion = null
+      val running: Animation = null
+      val crawling: Animation = null
+    }
   }
 
   object Audios {
