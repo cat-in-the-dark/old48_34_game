@@ -32,7 +32,7 @@ object Assets {
     val enemyHedge = new Texture(Gdx.files.internal("textures/enemyHedge.gif"))
 
     val goodFrames = TextureRegion.split(
-      new Texture(Gdx.files.internal("textures/player_good.png")), 200, 360)
+      new Texture(Gdx.files.internal("textures/player_good.gif")), 320, 360)
 
     val uglyFrames = TextureRegion.split(
       new Texture(Gdx.files.internal("textures/player_ugly.png")), 200, 360)
@@ -91,10 +91,10 @@ object Assets {
         (0, 0), (0, 2), (0, 0))
 
       val running = loopingAnimation(Textures.goodFrames,
-        (0, 0), (0, 3), (0, 4))
+        (0, 0), (0, 5), (0, 6))
 
       val crawling = loopingAnimation(Textures.goodFrames,
-        (0, 1), (0, 5), (0, 6))
+        (0, 1), (0, 3), (0, 4))
     }
 
     object uglyAnimations extends PlayerAnimationPack {
@@ -131,7 +131,7 @@ object Assets {
   }
 
   object Audios {
-    val roundEnd = Gdx.audio.newSound(Gdx.files.internal("sound/round_end.mp3"))
+    val shoot = Gdx.audio.newSound(Gdx.files.internal("sound/shoot.mp3"))
 
     val bgmCool = Gdx.audio.newMusic(Gdx.files.internal("sound/bgm_cool.mp3"))
     bgmCool.setLooping(true)
