@@ -17,6 +17,7 @@ class ParallaxImage(val tex: Texture, range: Vec2Range, initial: State, inc: Boo
   var y = initial match {
     case UP => range().x
     case DOWN => range().y
+    case _ => range().x
   }
 
   def go(d: State) = direction = Some(d)
@@ -28,6 +29,7 @@ class ParallaxImage(val tex: Texture, range: Vec2Range, initial: State, inc: Boo
       val newY = dir match {
         case UP | RUNNING | SHOOTING => if (inc) y - delta * animationSpeed else y + delta * animationSpeed
         case DOWN | CRAWLING => if (inc) y + delta * animationSpeed else y - delta * animationSpeed
+        case _ => y
       }
 
       val vecRange = range()
