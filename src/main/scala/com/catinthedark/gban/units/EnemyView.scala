@@ -1,7 +1,7 @@
 package com.catinthedark.gban.units
 
 import com.catinthedark.gban.common.Const
-import com.catinthedark.gban.view.{DOWN, UP}
+import com.catinthedark.gban.view.{DOWN, UP, SHOOTING}
 import com.catinthedark.lib.{MagicSpriteBatch, SimpleUnit}
 
 class EnemyView(val shared: Shared1) extends SimpleUnit {
@@ -20,12 +20,17 @@ class EnemyView(val shared: Shared1) extends SimpleUnit {
       DOWN
     }
   }
-  
+
   override def run(delta: Float) = {
-    magicBatch managed { batch =>
-      magicBatch.drawWithDebug(
-        shared.enemy.texture(delta),
-        shared.enemy.rect, shared.enemy.rect)
+    shared.enemy.state match {
+      case UP | SHOOTING =>
+        magicBatch managed { batch =>
+          magicBatch.drawWithDebug(
+            shared.enemy.texture(delta),
+            shared.enemy.rect, shared.enemy.rect)
+        }
+      case _ => println(s"Don't draw enemy state ${shared.enemy.state}")
     }
+    
   }
 }

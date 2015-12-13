@@ -16,6 +16,7 @@ case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAni
       case SHOOTING =>
         animationCounter += delta
         pack.shooting.getKeyFrame(animationCounter)
+      case DOWN => pack.up
       case _ =>
         println(s"Unknown enemy state $state")
         pack.up
