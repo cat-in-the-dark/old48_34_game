@@ -45,6 +45,7 @@ case class Player(var x: Float, var state: State, var frags: Int, pack: PlayerAn
                  var progress: Int = Const.Balance.initialProgress, var progressLevel: Int = 0) {
 
   var animationCounter = 0f
+  var coolDown = false
 
   def texture (delta: Float) = {
     state match {

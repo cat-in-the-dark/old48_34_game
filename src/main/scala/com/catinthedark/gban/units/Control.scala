@@ -55,10 +55,14 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred {
           println(s"screenX: $screenX screenY: $screenY pointer: $pointer button: $button x: $x y: $y originWidth: ${Gdx.graphics.getWidth}")
           shared.player.state match {
             case UP | RUNNING =>
-              onPlayerStateChanged(SHOOTING)
-              Assets.Audios.shoot.play(1)
-              defer(Balance.playerCooldown, () => shared.player.state = UP)
-              onShoot(new Point(screenX, Const.Projection.height.toInt - screenY))
+              if (!shared.player.coolDown) {
+                onPlayerStateChanged(SHOOTING)
+                Assets.Audios.shoot.play(1)
+                shared.player.coolDown = true
+                defer(Balance.playerCooldown, () => shared.player.state = UP)
+                defer(Balance.weaponCooldown, () => shared.player.coolDown = false)
+                onShoot(new Point(screenX, Const.Projection.height.toInt - screenY))
+              }
             case _ =>
           }
           true

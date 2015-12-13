@@ -111,6 +111,7 @@ object Const extends ConstDelegate {
     val initialProgress = maxProgress / 5
     val bucketVolume = 100
     val playerCooldown: Float = 0.5f
+    val weaponCooldown: Float = 1.5f
     val waterSpeed = irange("water in speed", 5, Some(1), Some(20))
     val waterOutSpeed = irange("water out speed", 20, Some(1), Some(50))
     val progressDownSpeed = irange("progress down speed", 1, Some(1), Some(50))
