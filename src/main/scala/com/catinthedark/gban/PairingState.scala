@@ -24,7 +24,8 @@ class PairingState(shared0: Shared0, name: String) extends Stub(name) with Textu
       }
     })
     
-    new Thread(shared0.networkControl).start()
+    shared0.networkControlThread = new Thread(shared0.networkControl)
+    shared0.networkControlThread.start()
     println("Network thread started")
   }
 

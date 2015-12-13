@@ -12,7 +12,7 @@ trait NetworkControl extends Runnable {
   val ILOOSE_PREFIX = "ILOOSE"
   val IWON_PREFIX = "IWON"
   val HELLO_PREFIX = "HELLO"
-  
+
   val buffer: ConcurrentLinkedQueue[String] = new ConcurrentLinkedQueue[String]()
 
   val onMove = new Pipe[(Float, Boolean)]()

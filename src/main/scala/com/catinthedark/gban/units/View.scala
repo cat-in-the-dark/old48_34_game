@@ -118,6 +118,5 @@ class View(val shared: Shared1) extends SimpleUnit {
   }
 
   override def onExit() = {
-    hud.dispose()
   }
 }

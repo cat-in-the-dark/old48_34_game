@@ -2,6 +2,7 @@ package com.catinthedark.gban.units
 
 
 import com.badlogic.gdx.{Input, InputAdapter, Gdx}
+import com.catinthedark.gban.Assets
 
 import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.common.Const.Balance
@@ -55,6 +56,7 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred {
           shared.player.state match {
             case UP | RUNNING =>
               onPlayerStateChanged(SHOOTING)
+              Assets.Audios.shoot.play(1)
               defer(Balance.playerCooldown, () => shared.player.state = UP)
               onShoot(new Point(screenX, screenY))
             case _ =>

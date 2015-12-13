@@ -10,14 +10,13 @@ import com.catinthedark.lib.constants.ConstDelegate
 object Const extends ConstDelegate {
   override def delegate = Seq(
     debugEnabled,
-    UI.skyPos,
-    UI.enemyBackYRange,
-    UI.enemyBackParallaxSpeed,
+//    UI.skyPos,
+//    UI.enemyBackYRange,
+//    UI.enemyBackParallaxSpeed,
     //    UI.myHedgeYRange, UI.myHedgeParallaxSpeed,
     //    UI.groundYRange, UI.groundParallaxSpeed,
     //    UI.roadYRange, UI.roadParallaxSpeed,
-        UI.enemyHedgeYRange, UI.enemyHedgeParallaxSpeed,
-//    UI.playerY,
+//        UI.enemyHedgeYRange, UI.enemyHedgeParallaxSpeed,
 //    UI.playerMinX,
 //    UI.playerUpWH,
 //    UI.playerDownWH,
@@ -31,11 +30,12 @@ object Const extends ConstDelegate {
 //    HUD.progressWh,
 //    HUD.myFragsPos,
 //    HUD.enemyFragsPos,
-    UI.pumpPosition,
-    HUD.waterBarPos,
-    HUD.waterBarWh,
-    UI.enemyY,
-    UI.plantPos
+//    UI.pumpPosition,
+//    HUD.waterBarPos,
+//    HUD.waterBarWh,
+//    UI.enemyY,
+//    UI.plantPos
+    UI.playerY
   )
 
   val debugEnabled = onOff("debug render", false)
@@ -61,7 +61,7 @@ object Const extends ConstDelegate {
     val enemyHedgeParallaxSpeed = frange("enemy hedge parallax move", 720, Some(500), Some(1000))
 
 
-    val playerY = frange("player y", 34, Some(0), Some(500))
+    val playerY = frange("player y", 10, Some(0), Some(500))
     val playerMinX = frange("player min x", 100, Some(0), Some(500))
     val playerUpWH = vec2Range("player up width height", new Vector2(200, 360))
     val playerDownWH = vec2Range("player down width height", new Vector2(200, 300))

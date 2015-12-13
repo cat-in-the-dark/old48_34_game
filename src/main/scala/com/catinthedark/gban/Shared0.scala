@@ -13,4 +13,5 @@ class Shared0(
   } else {
     new NetworkServerControl()
   }
+  var networkControlThread: Thread = null
 }
