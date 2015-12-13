@@ -19,7 +19,13 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   control.onPlayerStateChanged.ports += view.onPlayerStateChanged
   control.onMoveLeft.ports += view.onMoveLeft
   control.onMoveRight.ports += view.onMoveRight
-  control.onGameReload + (_ => forceReload = true)
+  control.onGameReload + (_ => {
+    forceReload = true
+    println("Trying to stop network thread")
+    if (shared0.networkControlThread != null) {
+      shared0.networkControlThread.interrupt()
+    }
+  })
   
   shared0.networkControl.onMove.ports += enemyView.onMove
   shared0.networkControl.onShoot.ports += enemyView.onShoot
