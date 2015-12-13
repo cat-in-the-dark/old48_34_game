@@ -97,6 +97,9 @@ object Assets {
     moneyFontParam.size = 44
     val hudFont = mainGenerator.generateFont(moneyFontParam)
     hudFont.setColor(92f / 255, 85f / 255, 103f / 255, 1)
+
+    val ctrlFont = mainGenerator.generateFont(moneyFontParam)
+    ctrlFont.setColor(224f / 255, 248f / 255, 18f / 255, 1)
   }
 
   object Animations {

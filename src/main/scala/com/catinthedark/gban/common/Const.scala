@@ -40,6 +40,8 @@ object Const extends ConstDelegate {
 //    UI.playerY,
   UI.upbarPos,
 //  UI.waterbarPos,
+  HUD.ctrl1Pos,
+  HUD.ctrl2Pos,
   Balance.progressDownSpeed
   )
 
@@ -101,6 +103,8 @@ object Const extends ConstDelegate {
 
     val waterBarPos = vec2Range("water bar pos", new Vector2(16, 55))
     val waterBarWh = vec2Range("water bar width height", new Vector2(24, 248))
+    val ctrl1Pos = vec2Range("ctrl1 pos", new Vector2(103, 56))
+    val ctrl2Pos = vec2Range("ctrl1 pos", new Vector2(897, 56))
   }
 
 
