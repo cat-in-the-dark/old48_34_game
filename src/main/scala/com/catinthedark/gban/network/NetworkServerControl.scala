@@ -45,12 +45,20 @@ class NetworkServerControl extends NetworkControl {
             case HELLO_PREFIX =>
               pushSocket.send(s"$HELLO_PREFIX:")
               isConnected = Some()
+            case PROGRESS_PREFIX =>
+              val attrs = data(1).split(";")
+              val progress = attrs(0).toInt
+              onProgress(progress)
             case _ => println(s"UPS, wrong prefix $rawData")
           }
         }
 
         if (!buffer.isEmpty && pollItems(1).isWritable) {
+          val message = buffer.poll()
           pushSocket.send(buffer.poll())
+          if (message.startsWith(IWON_PREFIX) || message.startsWith(ILOOSE_PREFIX)) {
+            shouldStop = true
+          }
         }
       } catch {
         case e: InterruptedException =>
