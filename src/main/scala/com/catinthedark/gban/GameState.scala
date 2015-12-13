@@ -50,7 +50,7 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
 
   shared0.networkControl.onILoose.ports += onILoose
   shared0.networkControl.onIWon.ports += onIWon
-  
+
   shared0.networkControl.onProgress.ports += progressDown.onEnemyProgress
   val children = Seq(view, control, waterControl, progressDown)
 

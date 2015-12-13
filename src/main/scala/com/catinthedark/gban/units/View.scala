@@ -25,7 +25,7 @@ class View(val shared: Shared1) extends SimpleUnit {
   shared.shared0.networkControl.onMove.ports += enemyView.onMove
   shared.shared0.networkControl.onShoot.ports += enemyView.onShoot
 
-  val enemyView = new EnemyView(shared)
+  val enemyView = new EnemyView(shared, Const.UI.enemyYRange, Const.UI.enemyParallaxSpeed)
 
   val hud = new Hud(shared)
 
@@ -35,6 +35,7 @@ class View(val shared: Shared1) extends SimpleUnit {
     ground.go(d)
     road.go(d)
     enemyHedge.go(d)
+    enemyView.go(d)
     shared.player.state = d
     shared.player.animationCounter = 0
     d match {

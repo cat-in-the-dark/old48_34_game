@@ -34,6 +34,8 @@ object Const extends ConstDelegate {
 //    HUD.waterBarPos,
 //    HUD.waterBarWh,
     UI.enemyY,
+  UI.enemyYRange,
+  UI.enemyParallaxSpeed,
 //    UI.plantPos
     UI.playerY
   )
@@ -44,6 +46,9 @@ object Const extends ConstDelegate {
     val animationSpeed = 0.2f
 
     val skyPos = vec2Range("sky pos", new Vector2(0, 91))
+
+    val enemyYRange = vec2Range("enemy parallax move", new Vector2(303, 415))
+    val enemyParallaxSpeed = frange("enemy parallax speed", 793, Some(300), Some(1000f))
 
     val enemyBackYRange = vec2Range("enemy back parallax move", new Vector2(100, 175))
     val enemyBackParallaxSpeed = frange("enemy back parallax speed", 500, Some(300), Some(1000f))
