@@ -66,6 +66,7 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
 
     pullSocket.close()
     pushSocket.close()
+    isConnected = None
     println("Client connection closed")
   }
 

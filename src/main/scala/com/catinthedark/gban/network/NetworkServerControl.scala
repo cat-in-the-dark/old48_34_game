@@ -65,6 +65,7 @@ class NetworkServerControl extends NetworkControl {
 
     pullSocket.close()
     pushSocket.close()
+    isConnected = None
     println("Server connection closed")
   }
 
