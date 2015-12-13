@@ -1,7 +1,7 @@
 package com.catinthedark.gban
 
 import com.badlogic.gdx.{utils, Gdx}
-import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.{Pixmap, Texture}
 import com.badlogic.gdx.graphics.g2d.{Animation, TextureRegion}
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter
@@ -14,6 +14,7 @@ object Assets {
 
   object Textures {
     val logo = new Texture(Gdx.files.internal("textures/logo.png"))
+    val mouse = new Pixmap(Gdx.files.internal("textures/aim.gif"))
 
     val t1 = new Texture(Gdx.files.internal("textures/menu.gif"))
     val t2 = new Texture(Gdx.files.internal("textures/tutor_1.gif"))
