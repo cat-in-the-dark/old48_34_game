@@ -49,6 +49,10 @@ object Assets {
     val enemyUgly = enemyUglyFrames(0)(0)
 
     val waterPump = new Texture(Gdx.files.internal("textures/water_pump.gif"))
+
+    val corn = Array(new Texture(Gdx.files.internal("textures/corn1.gif")),
+      new Texture(Gdx.files.internal("textures/corn2.gif")),
+      new Texture(Gdx.files.internal("textures/corn3.gif")))
   }
 
   object Fonts {
