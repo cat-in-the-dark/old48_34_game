@@ -90,6 +90,11 @@ object Const extends ConstDelegate {
     val width = 1161F
     val height = 652F
     
+    val enemyOffsetX = 20F
+    val enemyViewPort = width - enemyOffsetX * 2
+    
+    def calcEnemyX(originX: Float): Float = enemyOffsetX + originX * enemyViewPort / width
+    
     def calcX(screenX: Int): Int = (screenX.toFloat * Const.Projection.width / Gdx.graphics.getWidth).toInt
     def calcY(screenY: Int): Int = (screenY.toFloat * Const.Projection.height / Gdx.graphics.getHeight).toInt
   }
