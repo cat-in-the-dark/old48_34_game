@@ -1,5 +1,6 @@
 package com.catinthedark.gban.units
 
+import com.catinthedark.gban.Assets
 import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.view._
 import com.catinthedark.lib.{SimpleUnit, Deferred, MagicSpriteBatch}
@@ -19,11 +20,14 @@ abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) e
     if (amIDie) {
       shared.enemy.frags += 1
       shared.player.state = KILLED
+      shared.player.water /= 2
       defer(Const.Balance.restoreCooldown, () => {
         println("I Alive again")
         shared.player.state = UP
         shared.shared0.networkControl.move(shared.player.x, standUp = true)
       })
+    } else {
+      Assets.Audios.ricochet.play()
     }
   }
 
