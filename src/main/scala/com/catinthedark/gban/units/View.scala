@@ -13,6 +13,7 @@ import Magic.richifySpriteBatch
   * Created by over on 02.01.15.
   */
 class View(val shared: Shared1) extends SimpleUnit {
+  val enemyBack = new ParallaxImage(Assets.Textures.mexico, Const.UI.enemyBackYRange, DOWN, inc = false)
   val myHedge = new ParallaxImage(Assets.Textures.myHedge, Const.UI.myHedgeYRange, UP)
   val ground = new ParallaxImage(Assets.Textures.ground, Const.UI.groundYRange, UP)
   val road = new ParallaxImage(Assets.Textures.road, Const.UI.roadYRange, DOWN, inc = false)
@@ -23,6 +24,7 @@ class View(val shared: Shared1) extends SimpleUnit {
   val hud = new Hud(shared)
 
   def onSitStand(d: State): Unit = {
+    enemyBack.go(d)
     myHedge.go(d)
     ground.go(d)
     road.go(d)
@@ -76,6 +78,8 @@ class View(val shared: Shared1) extends SimpleUnit {
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
     batch.managed { batch =>
+      batch.draw(Assets.Textures.sky, Const.UI.skyPos().x, Const.UI.skyPos().y)
+      enemyBack.render(delta, batch, 0, Const.UI.enemyBackParallaxSpeed())
       enemyHedge.render(delta, batch, 0, Const.UI.enemyHedgeParallaxSpeed())
       road.render(delta, batch, 0, Const.UI.roadParallaxSpeed())
       myHedge.render(delta, batch, 0, Const.UI.myHedgeParallaxSpeed())

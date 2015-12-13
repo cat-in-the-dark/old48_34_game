@@ -23,6 +23,8 @@ object Assets {
     val gameOver = new Texture(Gdx.files.internal("textures/gameover.gif"))
     val gameWin = new Texture(Gdx.files.internal("textures/gamewin.gif"))
 
+    val sky = new Texture(Gdx.files.internal("textures/sky.gif"))
+    val mexico = new Texture(Gdx.files.internal("textures/mexico.gif"))
     val myHedge = new Texture(Gdx.files.internal("textures/myHedge.gif"))
     val ground = new Texture(Gdx.files.internal("textures/myGround.gif"))
 
