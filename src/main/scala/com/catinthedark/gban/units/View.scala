@@ -41,6 +41,7 @@ class View(val shared: Shared1) extends SimpleUnit {
   
   def onShoot(point: Point): Unit = {
     val amIExactly = if (shared.enemy.physRect != null) {
+      shared.player.frags += 1
       shared.enemy.physRect.contains(point.getX, point.getY)
     } else {
       false

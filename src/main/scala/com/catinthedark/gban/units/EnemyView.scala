@@ -9,6 +9,9 @@ class EnemyView(val shared: Shared1) extends SimpleUnit {
   
   def onShoot(amIDie: Boolean): Unit = {
     println(s"I receive shoot $amIDie")
+    if (amIDie) {
+      shared.enemy.frags += 1
+    }
   }
   
   def onMove(pos: (Float, Boolean)): Unit = {
