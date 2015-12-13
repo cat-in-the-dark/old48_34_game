@@ -56,10 +56,12 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
 
 
   override def onActivate(): Unit = {
+    Assets.Audios.bgm.play()
     children.foreach(_.onActivate())
   }
 
   override def onExit(): Unit = {
+    Assets.Audios.bgm.stop()
     children.foreach(_.onExit())
     shared1.reset()
   }

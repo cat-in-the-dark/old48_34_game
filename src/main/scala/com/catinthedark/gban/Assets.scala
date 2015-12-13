@@ -189,6 +189,9 @@ object Assets {
     waterOut.setVolume(2)
     waterOut.setLooping(true)
 
+    val bgm = Gdx.audio.newMusic(Gdx.files.internal("sound/bgm.mp3"))
+    waterIn.setLooping(true)
+
   }
 
 }
