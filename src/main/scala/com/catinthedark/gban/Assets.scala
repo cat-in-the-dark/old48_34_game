@@ -17,9 +17,11 @@ object Assets {
     val mouse = new Pixmap(Gdx.files.internal("textures/aim.gif"))
 
     val t1 = new Texture(Gdx.files.internal("textures/menu.gif"))
-    val t2 = new Texture(Gdx.files.internal("textures/tutor_1.gif"))
-    val t3 = new Texture(Gdx.files.internal("textures/tutor_2.gif"))
-    val t4 = new Texture(Gdx.files.internal("textures/tutor_3.gif"))
+    val t2 = new Texture(Gdx.files.internal("textures/t1.gif"))
+    val t3 = new Texture(Gdx.files.internal("textures/t2.png"))
+    val t4 = new Texture(Gdx.files.internal("textures/t3.gif"))
+    val t5 = new Texture(Gdx.files.internal("textures/t4.gif"))
+    val t6 = new Texture(Gdx.files.internal("textures/t5.png"))
 
     val sky = new Texture(Gdx.files.internal("textures/sky.gif"))
     val ground = new Texture(Gdx.files.internal("textures/myGround.gif"))

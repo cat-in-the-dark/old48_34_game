@@ -37,6 +37,8 @@ class Gban(address: String) extends Game {
     val t2 = keyAwait("Tutorial2", Assets.Textures.t2)
     val t3 = keyAwait("Tutorial3", Assets.Textures.t3)
     val t4 = keyAwait("Tutorial4", Assets.Textures.t4)
+    val t5 = keyAwait("Tutorial4", Assets.Textures.t5)
+    val t6 = keyAwait("Tutorial4", Assets.Textures.t6)
 
     shared = new Shared0(address)
 
@@ -50,7 +52,9 @@ class Gban(address: String) extends Game {
     rm.addRoute(t1, anyway => t2)
     rm.addRoute(t2, anyway => t3)
     rm.addRoute(t3, anyway => t4)
-    rm.addRoute(t4, anyway => pairing)
+    rm.addRoute(t4, anyway => t5)
+    rm.addRoute(t5, anyway => t6)
+    rm.addRoute(t6, anyway => pairing)
     rm.addRoute(pairing, anyway => game)
     rm.addRoute(game, res => {
       res match {
@@ -66,7 +70,7 @@ class Gban(address: String) extends Game {
       t1
     })
 
-    rm.start(pairing)
+    rm.start(logo)
   }
 
   override def render() = {
