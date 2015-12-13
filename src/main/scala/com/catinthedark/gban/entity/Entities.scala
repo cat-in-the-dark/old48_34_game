@@ -42,7 +42,7 @@ case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAni
   }
 }
 case class Player(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack, var water: Int = 0,
-                 var progress: Int = 0, var progressLevel: Int = 0) {
+                 var progress: Int = Const.Balance.initialProgress, var progressLevel: Int = 0) {
 
   var animationCounter = 0f
 

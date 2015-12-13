@@ -46,12 +46,20 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
             case HELLO_PREFIX =>
               println(s"Connected to $serverAddress")
               isConnected = Some()
+            case PROGRESS_PREFIX =>
+              val attrs = data(1).split(";")
+              val progress = attrs(0).toInt
+              onProgress(progress)
             case _ => println(s"UPS, wrong prefix $rawData")
           }
         }
 
         if (!buffer.isEmpty && pollItems(1).isWritable) {
-          pushSocket.send(buffer.poll())
+          val message = buffer.poll()
+          pushSocket.send(message)
+          if (message.startsWith(IWON_PREFIX) || message.startsWith(ILOOSE_PREFIX)) {
+            shouldStop = true
+          }
         }
       } catch {
         case e: InterruptedException =>
@@ -64,6 +72,7 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
       pushSocket.send(s"$IWON_PREFIX:")
     }
 
+    buffer.clear()
     pullSocket.close()
     pushSocket.close()
     isConnected = None

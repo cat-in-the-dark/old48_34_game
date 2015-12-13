@@ -12,6 +12,7 @@ trait NetworkControl extends Runnable {
   val ILOOSE_PREFIX = "ILOOSE"
   val IWON_PREFIX = "IWON"
   val HELLO_PREFIX = "HELLO"
+  val PROGRESS_PREFIX = "PROGRESS"
 
   val buffer: ConcurrentLinkedQueue[String] = new ConcurrentLinkedQueue[String]()
 
@@ -19,6 +20,7 @@ trait NetworkControl extends Runnable {
   val onShoot = new Pipe[Boolean]()
   val onILoose = new Pipe[Unit]()
   val onIWon = new Pipe[Unit]()
+  val onProgress = new Pipe[Unit]()
   
   def move(x: Float, standUp: Boolean): Unit = {
     buffer.add(s"$MOVE_PREFIX:$x;$standUp")
@@ -34,6 +36,10 @@ trait NetworkControl extends Runnable {
   
   def iWon(): Unit = {
     buffer.add(s"$IWON_PREFIX:")
+  }
+
+  def iCorn(progress: Int): Unit = {
+    buffer.add(s"$PROGRESS_PREFIX:$progress")
   }
 
   def isServer: Boolean
