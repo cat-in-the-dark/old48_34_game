@@ -1,13 +1,20 @@
 package com.catinthedark.gban.units
 
-import com.catinthedark.gban.view.{DOWN, SHOOTING, UP}
-import com.catinthedark.lib.MagicSpriteBatch
+import com.catinthedark.gban.common.Const
+import com.catinthedark.gban.view.{KILLED, DOWN, SHOOTING, UP}
+import com.catinthedark.lib.{SimpleUnit, Deferred, MagicSpriteBatch}
 
-class EnemyView(val shared: Shared1) {
+abstract class EnemyView(val shared: Shared1) extends SimpleUnit with Deferred {
   def onShoot(amIDie: Boolean): Unit = {
     println(s"I receive shoot $amIDie")
     if (amIDie) {
       shared.enemy.frags += 1
+      shared.player.state = KILLED
+      defer(Const.Balance.restoreCooldown, () => {
+        println("I Alive again")
+        shared.player.state = UP
+        shared.shared0.networkControl.move(shared.player.x, standUp = true)
+      })
     }
   }
 

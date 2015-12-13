@@ -10,6 +10,7 @@ case object DOWN extends State
 case object RUNNING extends State
 case object CRAWLING extends State
 case object SHOOTING extends State
+case object KILLED extends State
 
 class ParallaxImage(val tex: Texture, range: Vec2Range, initial: State, inc: Boolean = true) {
 
