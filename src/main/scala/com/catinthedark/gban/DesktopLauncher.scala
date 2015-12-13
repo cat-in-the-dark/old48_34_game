@@ -45,7 +45,7 @@ class MyApplication extends Application {
 object DesktopLauncher {
   def main(args: Array[String]) {
     val conf = new LwjglApplicationConfiguration
-    conf.title = "Спаси и Сохрани Злую Бабку"
+    conf.title = "Wild West Farm Shooting"
     conf.height = Const.Projection.height.toInt
     conf.width = Const.Projection.width.toInt
     conf.x = 300
