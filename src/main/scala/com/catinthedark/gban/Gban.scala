@@ -28,6 +28,7 @@ class Gban(address: String) extends Game {
     }
 
   val rand = new Random()
+  var shared: Shared0 = _
 
   override def create() = {
 
@@ -37,7 +38,7 @@ class Gban(address: String) extends Game {
     val t3 = keyAwait("Tutorial3", Assets.Textures.t3)
     val t4 = keyAwait("Tutorial4", Assets.Textures.t4)
 
-    val shared: Shared0 = new Shared0(address)
+    shared = new Shared0(address)
 
     val pairing = new PairingState(shared, "Pairing")
     
@@ -70,5 +71,11 @@ class Gban(address: String) extends Game {
 
   override def render() = {
     rm.run(Gdx.graphics.getDeltaTime)
+  }
+
+  override def dispose(): Unit ={
+    super.dispose()
+    if(shared.networkControlThread != null)
+      shared.networkControlThread.interrupt()
   }
 }
