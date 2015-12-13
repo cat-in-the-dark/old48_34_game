@@ -55,7 +55,7 @@ class NetworkServerControl extends NetworkControl {
 
         if (!buffer.isEmpty && pollItems(1).isWritable) {
           val message = buffer.poll()
-          pushSocket.send(buffer.poll())
+          pushSocket.send(message)
           if (message.startsWith(IWON_PREFIX) || message.startsWith(ILOOSE_PREFIX)) {
             shouldStop = true
           }
