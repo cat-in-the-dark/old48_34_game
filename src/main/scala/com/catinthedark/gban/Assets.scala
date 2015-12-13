@@ -132,6 +132,7 @@ object Assets {
 
   object Audios {
     val shoot = Gdx.audio.newSound(Gdx.files.internal("sound/shoot.mp3"))
+    val ricochet = Gdx.audio.newSound(Gdx.files.internal("sound/ricochet.mp3"))
 
     val bgmCool = Gdx.audio.newMusic(Gdx.files.internal("sound/bgm_cool.mp3"))
     bgmCool.setLooping(true)
