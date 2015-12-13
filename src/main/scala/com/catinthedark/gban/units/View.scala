@@ -100,7 +100,7 @@ class View(val shared: Shared1) extends SimpleUnit {
 
     batch managed { render =>
       //batch.draw(Assets.Textures.corn(0), Const.UI.plantPos().x + 20, Const.UI.plantPos().y + 10)
-      batch.draw(Assets.Textures.corn(0), Const.UI.plantPos().x, Const.UI.plantPos().y)
+      batch.draw(Assets.Textures.corn(shared.player.progressLevel), Const.UI.plantPos().x, Const.UI.plantPos().y)
     }
 
     hud.render()

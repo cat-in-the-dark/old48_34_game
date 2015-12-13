@@ -99,7 +99,8 @@ object Const extends ConstDelegate {
   }
 
   object Balance {
-    val maxProgress = 1000
+    val progressLevels = 3
+    val maxProgress = 200
     val bucketVolume = 100
     val playerCooldown: Float = 0.5f
     val waterSpeed = irange("water in speed", 5, Some(1), Some(20))

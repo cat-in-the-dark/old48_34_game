@@ -25,7 +25,7 @@ case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAni
         pack.crawling.getKeyFrame(animationCounter)
     }
   }
-  
+
   def rect: Rectangle = {
     state match {
       case UP =>

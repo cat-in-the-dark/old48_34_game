@@ -138,6 +138,9 @@ object Assets {
 
     val waterIn = Gdx.audio.newMusic(Gdx.files.internal("sound/water_in.mp3"))
     waterIn.setLooping(false)
+    val waterOut = Gdx.audio.newMusic(Gdx.files.internal("sound/voda_iz_vedra.mp3"))
+    waterOut.setVolume(2)
+    waterOut.setLooping(true)
 
   }
 

@@ -6,19 +6,26 @@ import com.catinthedark.gban.view.DOWN
 import com.catinthedark.lib.SimpleUnit
 
 class WaterControl(val shared: Shared1) extends SimpleUnit {
-  var was = false
+  var wasIn = false
 
   def doInAction(now: Boolean) = {
-    (was, now) match {
+    (wasIn, now) match {
       case (false, true) => Assets.Audios.waterIn.play()
       case (true, false) => Assets.Audios.waterIn.stop()
       case _ =>
     }
-    was = now
+    wasIn = now
   }
 
-  def doOutAction() = {
+  var wasOut = false
 
+  def doOutAction(now: Boolean) = {
+    (wasOut, now) match {
+      case (false, true) => Assets.Audios.waterOut.play()
+      case (true, false) => Assets.Audios.waterOut.stop()
+      case _ =>
+    }
+    wasOut = now
   }
 
   override def run(delta: Float): Unit = {
@@ -30,8 +37,14 @@ class WaterControl(val shared: Shared1) extends SimpleUnit {
 
       player.water -= Math.min(Const.Balance.waterOutSpeed(), player.water)
       player.progress = Math.min(player.progress + Const.Balance.waterOutSpeed(), Const.Balance.maxProgress)
-      doOutAction()
+      val newLevel = Math.ceil(player.progress.toFloat / Const.Balance.maxProgress * Const.Balance.progressLevels).toInt - 1
+
+      player.progressLevel = Math.max(player.progressLevel, newLevel)
+
+      doOutAction(true)
     }
+    else
+      doOutAction(false)
 
     if (player.water != Const.Balance.bucketVolume &&
       player.state == DOWN &&
