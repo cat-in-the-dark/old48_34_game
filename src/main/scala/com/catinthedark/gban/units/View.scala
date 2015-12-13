@@ -22,6 +22,11 @@ class View(val shared: Shared1) extends SimpleUnit {
   val batch = new SpriteBatch()
   val magicBatch = new MagicSpriteBatch(Const.debugEnabled())
 
+  shared.shared0.networkControl.onMove.ports += enemyView.onMove
+  shared.shared0.networkControl.onShoot.ports += enemyView.onShoot
+
+  val enemyView = new EnemyView(shared)
+
   val hud = new Hud(shared)
 
   def onPlayerStateChanged(d: State): Unit = {
@@ -102,6 +107,13 @@ class View(val shared: Shared1) extends SimpleUnit {
     batch.managed { batch =>
       batch.draw(Assets.Textures.sky, Const.UI.skyPos().x, Const.UI.skyPos().y)
       enemyBack.render(delta, batch, 0, Const.UI.enemyBackParallaxSpeed())
+    }
+
+    magicBatch managed { batch =>
+      enemyView.render(delta, batch)
+    }
+
+    batch.managed { batch =>
       enemyHedge.render(delta, batch, 0, Const.UI.enemyHedgeParallaxSpeed())
       road.render(delta, batch, 0, Const.UI.roadParallaxSpeed())
       myHedge.render(delta, batch, 0, Const.UI.myHedgeParallaxSpeed())

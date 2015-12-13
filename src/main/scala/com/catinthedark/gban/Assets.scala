@@ -35,17 +35,17 @@ object Assets {
       new Texture(Gdx.files.internal("textures/player_good.gif")), 320, 360)
 
     val uglyFrames = TextureRegion.split(
-      new Texture(Gdx.files.internal("textures/player_ugly.png")), 200, 360)
+      new Texture(Gdx.files.internal("textures/player_ugly.gif")), 200, 360)
 
     val uglyUp = uglyFrames(0)(0)
     val uglyDown = uglyFrames(0)(1)
 
     val enemyGoodFrames = TextureRegion.split(
-      new Texture(Gdx.files.internal("textures/enemy_good.png")), 96, 80)
+      new Texture(Gdx.files.internal("textures/enemy_good.gif")), 104, 80)
     val enemyGood = enemyGoodFrames(0)(0)
 
     val enemyUglyFrames = TextureRegion.split(
-      new Texture(Gdx.files.internal("textures/enemy_ugly.png")), 96, 80)
+      new Texture(Gdx.files.internal("textures/enemy_ugly.gif")), 104, 80)
     val enemyUgly = enemyUglyFrames(0)(0)
 
     val waterPump = new Texture(Gdx.files.internal("textures/water_pump.gif"))

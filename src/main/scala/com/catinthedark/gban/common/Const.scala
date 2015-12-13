@@ -33,7 +33,7 @@ object Const extends ConstDelegate {
 //    UI.pumpPosition,
 //    HUD.waterBarPos,
 //    HUD.waterBarWh,
-//    UI.enemyY,
+    UI.enemyY,
 //    UI.plantPos
     UI.playerY
   )
