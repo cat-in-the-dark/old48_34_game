@@ -51,8 +51,8 @@ class View(val shared: Shared1) extends SimpleUnit {
   
   def moveLeft(speed: Float): Unit = {
     println(shared.player.x, Const.UI.playerUpWH().x)
-    if (shared.player.x - speed <= 0) {
-      shared.player.x = 0
+    if (shared.player.x - speed <= Const.UI.playerMinX()) {
+      shared.player.x = Const.UI.playerMinX()
     } else {
       shared.player.x -= speed
     }
@@ -80,6 +80,7 @@ class View(val shared: Shared1) extends SimpleUnit {
       road.render(delta, batch, 0, Const.UI.roadParallaxSpeed())
       myHedge.render(delta, batch, 0, Const.UI.myHedgeParallaxSpeed())
       ground.render(delta, batch, 0, Const.UI.groundParallaxSpeed())
+      batch.draw(Assets.Textures.waterPump, Const.UI.pumpPosition().x, Const.UI.pumpPosition().y)
     }
 
     magicBatch managed { batch =>

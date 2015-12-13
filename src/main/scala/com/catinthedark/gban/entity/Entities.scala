@@ -9,7 +9,7 @@ import com.catinthedark.gban.view._
 case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack) {
 
 }
-case class Player(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack) {
+case class Player(var x: Float, var state: State, var frags: Int, pack: PlayerAnimationPack, var water: Int = 0) {
 
   var animationCounter = 0f
 

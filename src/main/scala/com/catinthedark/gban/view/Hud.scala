@@ -9,9 +9,10 @@ import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.units.Shared1
 import com.catinthedark.lib.Magic.richifySpriteBatch
 
-class HudBar(val max: Int) {
+class HudBar(val max: Int, vertical: Boolean = false) {
   def render(shapeRenderer: ShapeRenderer, value: Int, pos: Vector2, wh: Vector2): Unit = {
-    shapeRenderer.rect(pos.x, pos.y, wh.x * value / max, wh.y)
+    val (w, h) = if (vertical) (wh.x, wh.y * value / max) else (wh.x * value / max, wh.y)
+    shapeRenderer.rect(pos.x, pos.y, w, h)
   }
 }
 class Hud(shared: Shared1) {
@@ -19,16 +20,21 @@ class Hud(shared: Shared1) {
   val shapeRender = new ShapeRenderer()
   val barMyProgress = new HudBar(Const.Balance.maxProgress)
   val barEnemyProgress = new HudBar(Const.Balance.maxProgress)
+  val barWater = new HudBar(Const.Balance.bucketVolume, true)
 
   def render(): Unit = {
+    val player = shared.player
+
     shapeRender.begin(ShapeType.Filled)
     barMyProgress.render(shapeRender, Const.Balance.maxProgress, Const.HUD.myProgressPos(), Const.HUD.progressWh())
     barMyProgress.render(shapeRender, Const.Balance.maxProgress, Const.HUD.enemyProgressPos(), Const.HUD.progressWh())
+    barWater.render(shapeRender, player.water, Const.HUD.waterBarPos(), Const.HUD.waterBarWh())
     shapeRender.end()
 
     batch managed { batch =>
-      Assets.Fonts.hudFont.draw(batch, "1", Const.HUD.myFragsPos().x, Const.HUD.myFragsPos().y)
-      Assets.Fonts.hudFont.draw(batch, "0", Const.HUD.enemyFragsPos().x, Const.HUD.enemyFragsPos().y)
+      Assets.Fonts.hudFont.draw(batch, player.frags.toString, Const.HUD.myFragsPos().x, Const.HUD.myFragsPos().y)
+      Assets.Fonts.hudFont.draw(batch, shared.enemy.frags.toString,
+        Const.HUD.enemyFragsPos().x, Const.HUD.enemyFragsPos().y)
     }
   }
 

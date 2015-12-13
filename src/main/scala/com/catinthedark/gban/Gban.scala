@@ -65,7 +65,7 @@ class Gban(address: String) extends Game {
       t1
     })
 
-    rm.start(logo)
+    rm.start(pairing)
   }
 
   override def render() = {

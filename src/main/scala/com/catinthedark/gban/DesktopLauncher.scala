@@ -32,7 +32,7 @@ class MyApplication extends Application {
       }
       root.getChildren.add(el)
     }
-    val sc = new Scene(root, 275, 500)
+    val sc = new Scene(root, 275, 700)
 
     stage.setTitle("Property Tuner v0.0.0")
     stage.setX(0)

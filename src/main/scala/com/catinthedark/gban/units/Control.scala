@@ -12,8 +12,7 @@ import org.lwjgl.util.Point
 /**
   * Created by over on 22.01.15.
   */
-abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with Interval {
-  val interval = 30f
+abstract class Control(shared: Shared1) extends SimpleUnit with Deferred {
   val onSitStand = new Pipe[State]()
   val onShoot = new Pipe[Point]()
   val onGameReload = new Pipe[Unit]()
@@ -55,7 +54,6 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred with In
   }
 
   override def run(delta: Float): Unit = {
-    super.run(delta)
     if (Gdx.input.isKeyPressed(Input.Keys.A)) {
       onMoveLeft()
     } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {

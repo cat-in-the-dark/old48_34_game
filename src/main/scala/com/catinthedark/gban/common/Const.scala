@@ -15,6 +15,7 @@ object Const extends ConstDelegate {
     //    UI.roadYRange, UI.roadParallaxSpeed,
     //    UI.enemyHedgeYRange, UI.enemyHedgeParallaxSpeed)
     UI.playerY,
+    UI.playerMinX,
     UI.playerUpWH,
     UI.playerDownWH,
     gamerSpeed,
@@ -22,11 +23,14 @@ object Const extends ConstDelegate {
     //    UI.playerY,
     //    UI.playerUpWH,
     //    UI.playerDownWH,
-    HUD.myProgressPos,
-    HUD.enemyProgressPos,
-    HUD.progressWh,
-    HUD.myFragsPos,
-    HUD.enemyFragsPos
+//    HUD.myProgressPos,
+//    HUD.enemyProgressPos,
+//    HUD.progressWh,
+//    HUD.myFragsPos,
+//    HUD.enemyFragsPos,
+    UI.pumpPosition,
+    HUD.waterBarPos,
+    HUD.waterBarWh
   )
 
   val debugEnabled = onOff("debug render", false)
@@ -50,8 +54,12 @@ object Const extends ConstDelegate {
 
 
     val playerY = frange("player y", 34, Some(0), Some(500))
+    val playerMinX = frange("player min x", 100, Some(0), Some(500))
     val playerUpWH = vec2Range("player up width height", new Vector2(200, 360))
     val playerDownWH = vec2Range("player down width height", new Vector2(200, 300))
+
+    val pumpPosition = vec2Range("pump position", new Vector2(58, 14))
+    val pumpEpsilon = frange("pump position", 10, Some(0), Some(50))
 
   }
 
@@ -61,6 +69,9 @@ object Const extends ConstDelegate {
     val progressWh = vec2Range("player down width height", new Vector2(355, 30))
     val myFragsPos = vec2Range("my frag pos", new Vector2(454, 613))
     val enemyFragsPos = vec2Range("enemy frag pos", new Vector2(553, 613))
+
+    val waterBarPos = vec2Range("water bar pos", new Vector2(21, 18))
+    val waterBarWh = vec2Range("water bar width height", new Vector2(15, 264))
   }
 
 
@@ -73,7 +84,9 @@ object Const extends ConstDelegate {
   }
 
   object Balance {
-    val maxProgress = 100
+    val maxProgress = 1000
+    val bucketVolume = 100
+    val waterSpeed = irange("water speed", 5, Some(1), Some(20))
   }
 
   val serverPullPort = 9000
