@@ -25,10 +25,19 @@ case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAni
 
   def rect: Rectangle = {
     state match {
-      case UP =>
+      case UP | SHOOTING | RUNNING =>
         new Rectangle(Const.Projection.calcEnemyX(x), Const.UI.enemyY(), Const.UI.enemyUpWH().x, Const.UI.enemyUpWH().y)
-      case DOWN =>
+      case DOWN | CRAWLING =>
         new Rectangle(Const.Projection.calcEnemyX(x), Const.UI.enemyY(), Const.UI.enemyDownWH().x, Const.UI.enemyDownWH().y)
+    }
+  }
+  
+  def physRect: Rectangle = {
+    state match {
+      case UP | SHOOTING | RUNNING =>
+        new Rectangle(Const.Projection.calcEnemyX(x), Const.UI.enemyY(), Const.UI.enemyUpPhysWH().x, Const.UI.enemyUpPhysWH().y)
+      case _ =>
+        null
     }
   }
 }

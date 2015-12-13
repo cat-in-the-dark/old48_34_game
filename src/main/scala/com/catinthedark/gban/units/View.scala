@@ -40,8 +40,13 @@ class View(val shared: Shared1) extends SimpleUnit {
   }
   
   def onShoot(point: Point): Unit = {
-    println(s"I shoot in $point")
-    val amIExactly = false
+    val amIExactly = if (shared.enemy.physRect != null) {
+      shared.enemy.physRect.contains(point.getX, point.getY)
+    } else {
+      false
+    }
+    
+    println(s"I shoot $point in the ${shared.enemy.physRect} and amIExactly: $amIExactly")
     shared.shared0.networkControl.shoot(amIExactly)
   }
 

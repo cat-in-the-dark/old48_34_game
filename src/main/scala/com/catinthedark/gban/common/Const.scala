@@ -69,6 +69,8 @@ object Const extends ConstDelegate {
     val enemyY = frange("enemy y", 415, Some(100), Some(652))
     val enemyUpWH = vec2Range("enemy up width height", new Vector2(80, 96))
     val enemyDownWH = vec2Range("enemy down width height", new Vector2(80, 96))
+
+    val enemyUpPhysWH = vec2Range("enemy up phys width height", new Vector2(80, 96))
     
     val pumpPosition = vec2Range("pump position", new Vector2(58, 14))
     val pumpEpsilon = frange("pump epsilon", 10, Some(0), Some(50))
