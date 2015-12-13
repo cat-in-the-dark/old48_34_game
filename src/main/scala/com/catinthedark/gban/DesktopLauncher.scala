@@ -60,11 +60,11 @@ object DesktopLauncher {
     }
     
 
-    new Thread(new Runnable {
-      override def run(): Unit = {
-        Application.launch(classOf[MyApplication])
-      }
-    }).start()
+//    new Thread(new Runnable {
+//      override def run(): Unit = {
+//        Application.launch(classOf[MyApplication])
+//      }
+//    }).start()
 
     val game = new LwjglApplication(new Gban(address), conf)
   }
