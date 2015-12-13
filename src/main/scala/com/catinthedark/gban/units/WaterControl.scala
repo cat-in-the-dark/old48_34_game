@@ -56,4 +56,9 @@ class WaterControl(val shared: Shared1) extends SimpleUnit {
       doInAction(false)
     }
   }
+
+  override def onExit(): Unit = {
+    Assets.Audios.waterIn.stop()
+    Assets.Audios.waterOut.stop()
+  }
 }
