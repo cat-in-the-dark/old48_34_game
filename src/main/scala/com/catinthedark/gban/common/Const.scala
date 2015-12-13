@@ -83,6 +83,8 @@ object Const extends ConstDelegate {
     val plantPos = vec2Range("plant pos", new Vector2(900, 9))
     val plantEpsilon = frange("plant epsilon", 10, Some(0), Some(50))
 
+    val hatSpeed = 600
+
   }
 
   object HUD {

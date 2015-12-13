@@ -78,6 +78,9 @@ object Assets {
       new Texture(Gdx.files.internal("textures/enemy_ugly.gif")), 104, 80)
     val enemyUgly = enemyUglyFrames(0)(0)
 
+    val goodHat = new Texture(Gdx.files.internal("textures/hat_good.png"))
+    val uglyHat = new Texture(Gdx.files.internal("textures/hat_ugly.png"))
+
     val waterPump = new Texture(Gdx.files.internal("textures/water_pump.gif"))
   }
 
