@@ -109,10 +109,10 @@ object Assets {
         (0, 0), (0, 2), (0, 0))
 
       val running = loopingAnimation(Textures.uglyFrames,
-        (0, 0), (0, 3), (0, 4))
+        (0, 0), (0, 5), (0, 6))
 
       val crawling = loopingAnimation(Textures.uglyFrames,
-        (0, 1), (0, 5), (0, 6))
+        (0, 1), (0, 3), (0, 4))
 
       val killed: TextureRegion = Textures.uglyFrames(0)(7)
     }
