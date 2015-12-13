@@ -43,8 +43,8 @@ object Assets {
         new Texture(Gdx.files.internal("textures/corn3.gif")))
       override val enemyHedge: Texture = new Texture(Gdx.files.internal("textures/goodEnemyHedge.gif"))
       override val background: Texture = new Texture(Gdx.files.internal("textures/mexico.gif"))
-      override val winScreen: Texture = new Texture(Gdx.files.internal("textures/gamewin.gif"))
-      override val loseScreen: Texture = new Texture(Gdx.files.internal("textures/gameover.gif"))
+      override val winScreen: Texture = new Texture(Gdx.files.internal("textures/win-screen-american.gif"))
+      override val loseScreen: Texture = new Texture(Gdx.files.internal("textures/lose-screen-american.gif"))
       override val pairing: Texture = new Texture(Gdx.files.internal("textures/pairing.png"))
     }
 
@@ -56,8 +56,8 @@ object Assets {
         new Texture(Gdx.files.internal("textures/tomatos3.gif")))
       override val enemyHedge: Texture = new Texture(Gdx.files.internal("textures/uglyEnemyHedge.gif"))
       override val background: Texture = new Texture(Gdx.files.internal("textures/america.gif"))
-      override val winScreen: Texture = new Texture(Gdx.files.internal("textures/gamewin.gif"))
-      override val loseScreen: Texture = new Texture(Gdx.files.internal("textures/gameover.gif"))
+      override val winScreen: Texture = new Texture(Gdx.files.internal("textures/win-screen-mexico.gif"))
+      override val loseScreen: Texture = new Texture(Gdx.files.internal("textures/lose-screen-mexico.gif"))
       override val pairing: Texture = new Texture(Gdx.files.internal("textures/pairing.png"))
     }
 
