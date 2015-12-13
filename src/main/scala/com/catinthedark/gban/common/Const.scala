@@ -71,8 +71,8 @@ object Const extends ConstDelegate {
 
     val playerY = frange("player y", 10, Some(0), Some(500))
     val playerMinX = frange("player min x", 41, Some(0), Some(500))
-    val playerUpWH = vec2Range("player up width height", new Vector2(200, 360))
-    val playerDownWH = vec2Range("player down width height", new Vector2(200, 300))
+    val playerUpWH = vec2Range("player up width height", new Vector2(320, 360))
+    val playerDownWH = vec2Range("player down width height", new Vector2(320, 300))
     
     val enemyY = frange("enemy y", 415, Some(100), Some(652))
     val enemyUpWH = vec2Range("enemy up width height", new Vector2(80, 96))
@@ -111,7 +111,7 @@ object Const extends ConstDelegate {
     val enemyOffsetX = 20F
     val enemyViewPort = width - enemyOffsetX * 2
     
-    def calcEnemyX(originX: Float): Float = enemyOffsetX + originX * enemyViewPort / width
+    def calcEnemyX(originX: Float): Float = width - (enemyOffsetX * 2 + originX * enemyViewPort / width)
     
     def calcX(screenX: Int): Int = (screenX.toFloat * Const.Projection.width / Gdx.graphics.getWidth).toInt
     def calcY(screenY: Int): Int = (screenY.toFloat * Const.Projection.height / Gdx.graphics.getHeight).toInt
