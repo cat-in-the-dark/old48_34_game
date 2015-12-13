@@ -32,7 +32,7 @@ class NetworkClientControl(serverAddress: String) extends NetworkControl {
           case SHOOT_PREFIX => shootListener()
           case ILOOSE_PREFIX => iLooseListener()
           case IWON_PREFIX => iWonListener()
-          case HELLO_PREFIX => 
+          case HELLO_PREFIX =>
             println(s"Connected to $serverAddress")
             isConnected = Some()
           case _ => println(s"UPS, wrong prefix $rawData")
