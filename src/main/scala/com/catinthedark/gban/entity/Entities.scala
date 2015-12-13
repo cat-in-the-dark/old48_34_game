@@ -16,13 +16,9 @@ case class Enemy(var x: Float, var state: State, var frags: Int, pack: PlayerAni
       case SHOOTING =>
         animationCounter += delta
         pack.shooting.getKeyFrame(animationCounter)
-      case DOWN => pack.down
-      case RUNNING =>
-        animationCounter += delta
-        pack.running.getKeyFrame(animationCounter)
-      case CRAWLING =>
-        animationCounter += delta
-        pack.crawling.getKeyFrame(animationCounter)
+      case _ =>
+        println(s"Unknown enemy state $state")
+        pack.up
     }
   }
 
