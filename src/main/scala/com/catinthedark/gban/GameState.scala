@@ -43,7 +43,6 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
       shared0.networkControlThread.interrupt()
     }
   }
->>>>>>> 88be735020294341e3fbb2df9c1c06acb8d1d0b1
   
   shared0.networkControl.onMove.ports += enemyView.onMove
   shared0.networkControl.onShoot.ports += enemyView.onShoot
