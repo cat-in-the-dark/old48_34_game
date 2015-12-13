@@ -35,7 +35,7 @@ object Assets {
       new Texture(Gdx.files.internal("textures/player_good.gif")), 320, 360)
 
     val uglyFrames = TextureRegion.split(
-      new Texture(Gdx.files.internal("textures/player_ugly.gif")), 200, 360)
+      new Texture(Gdx.files.internal("textures/player_ugly.gif")), 320, 360)
 
     val uglyUp = uglyFrames(0)(0)
     val uglyDown = uglyFrames(0)(1)
@@ -81,6 +81,7 @@ object Assets {
       val shooting: Animation
       val running: Animation
       val crawling: Animation
+      val killed: TextureRegion
     }
     object goodAnimations extends PlayerAnimationPack {
       val up: TextureRegion = Textures.goodFrames(0)(0)
@@ -95,6 +96,8 @@ object Assets {
 
       val crawling = loopingAnimation(Textures.goodFrames,
         (0, 1), (0, 3), (0, 4))
+      
+      val killed: TextureRegion = Textures.goodFrames(0)(7)
     }
 
     object uglyAnimations extends PlayerAnimationPack {
@@ -110,6 +113,8 @@ object Assets {
 
       val crawling = loopingAnimation(Textures.uglyFrames,
         (0, 1), (0, 5), (0, 6))
+
+      val killed: TextureRegion = Textures.uglyFrames(0)(7)
     }
     
     object uglyEnemyAnimations extends PlayerAnimationPack {
@@ -119,6 +124,7 @@ object Assets {
       val down: TextureRegion = null
       val running: Animation = null
       val crawling: Animation = null
+      val killed: TextureRegion = null
     }
     object goodEnemyAnimations extends PlayerAnimationPack {
       val up = Textures.enemyGood
@@ -127,6 +133,7 @@ object Assets {
       val down: TextureRegion = null
       val running: Animation = null
       val crawling: Animation = null
+      val killed: TextureRegion = null
     }
   }
 

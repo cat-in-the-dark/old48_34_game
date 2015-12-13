@@ -1,10 +1,11 @@
 package com.catinthedark.gban.units
 
+import com.catinthedark.gban.common.Const
 import com.catinthedark.gban.view._
-import com.catinthedark.lib.MagicSpriteBatch
+import com.catinthedark.lib.{SimpleUnit, Deferred, MagicSpriteBatch}
 import com.catinthedark.lib.constants.{FRange, Vec2Range}
 
-class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) {
+abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) extends SimpleUnit with Deferred {
   var y = range().y
   var dir: Option[State] = None
 
@@ -12,10 +13,17 @@ class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) {
     dir = Some(state)
   }
 
+
   def onShoot(amIDie: Boolean): Unit = {
     println(s"I receive shoot $amIDie")
     if (amIDie) {
       shared.enemy.frags += 1
+      shared.player.state = KILLED
+      defer(Const.Balance.restoreCooldown, () => {
+        println("I Alive again")
+        shared.player.state = UP
+        shared.shared0.networkControl.move(shared.player.x, standUp = true)
+      })
     }
   }
 
@@ -47,7 +55,7 @@ class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) {
 
     dir map { dir =>
       val newY = dir match {
-        case UP | RUNNING | SHOOTING =>  y + delta * speed()
+        case UP | RUNNING | SHOOTING => y + delta * speed()
         case DOWN | CRAWLING => y - delta * speed()
         case _ => y
       }

@@ -22,10 +22,12 @@ class View(val shared: Shared1) extends SimpleUnit {
   val batch = new SpriteBatch()
   val magicBatch = new MagicSpriteBatch(Const.debugEnabled())
 
+  val enemyView = new EnemyView(shared, Const.UI.enemyYRange, Const.UI.enemyParallaxSpeed) with LocalDeferred
+
   shared.shared0.networkControl.onMove.ports += enemyView.onMove
   shared.shared0.networkControl.onShoot.ports += enemyView.onShoot
 
-  val enemyView = new EnemyView(shared, Const.UI.enemyYRange, Const.UI.enemyParallaxSpeed)
+
 
   val hud = new Hud(shared)
 
@@ -47,12 +49,14 @@ class View(val shared: Shared1) extends SimpleUnit {
   
   def onShoot(point: Point): Unit = {
     val amIExactly = if (shared.enemy.physRect != null) {
-      shared.player.frags += 1
       shared.enemy.physRect.contains(point.getX, point.getY)
     } else {
       false
     }
-    
+    if (amIExactly) {
+      shared.player.frags += 1
+      shared.enemy.state = KILLED
+    }
     println(s"I shoot $point in the ${shared.enemy.physRect} and amIExactly: $amIExactly")
     shared.shared0.networkControl.shoot(amIExactly)
   }
@@ -104,6 +108,8 @@ class View(val shared: Shared1) extends SimpleUnit {
   override def run(delta: Float) = {
     Gdx.gl.glClearColor(0, 0, 0, 0)
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
+    
+    enemyView.run(delta)
 
     batch.managed { batch =>
       batch.draw(Assets.Textures.sky, Const.UI.skyPos().x, Const.UI.skyPos().y)
