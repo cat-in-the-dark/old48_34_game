@@ -14,11 +14,20 @@ import org.lwjgl.util.Point
   * Created by over on 02.01.15.
   */
 class View(val shared: Shared1) extends SimpleUnit {
-  val enemyBack = new ParallaxImage(Assets.Textures.mexico, Const.UI.enemyBackYRange, DOWN, inc = false)
-  val myHedge = new ParallaxImage(Assets.Textures.myHedge, Const.UI.myHedgeYRange, UP)
+  val (enemyBack, myHedge, enemyHedge, plant) = if (shared.shared0.networkControl.isServer) {
+    (new ParallaxImage(Assets.Textures.GoodThemePack.background, Const.UI.enemyBackYRange, DOWN, inc = false),
+      new ParallaxImage(Assets.Textures.GoodThemePack.hedge, Const.UI.myHedgeYRange, UP), 
+      new ParallaxImage(Assets.Textures.GoodThemePack.enemyHedge, Const.UI.enemyHedgeYRange, DOWN, inc = false), 
+      Assets.Textures.GoodThemePack.plant)
+  } else {
+    (new ParallaxImage(Assets.Textures.UglyThemePack.background, Const.UI.enemyBackYRange, DOWN, inc = false), 
+      new ParallaxImage(Assets.Textures.UglyThemePack.hedge, Const.UI.myHedgeYRange, UP),
+      new ParallaxImage(Assets.Textures.UglyThemePack.enemyHedge, Const.UI.enemyHedgeYRange, DOWN, inc = false),
+      Assets.Textures.UglyThemePack.plant)
+  }
+
   val ground = new ParallaxImage(Assets.Textures.ground, Const.UI.groundYRange, UP)
   val road = new ParallaxImage(Assets.Textures.road, Const.UI.roadYRange, DOWN, inc = false)
-  val enemyHedge = new ParallaxImage(Assets.Textures.enemyHedge, Const.UI.enemyHedgeYRange, DOWN, inc = false)
   val batch = new SpriteBatch()
   val magicBatch = new MagicSpriteBatch(Const.debugEnabled())
 
@@ -136,7 +145,7 @@ class View(val shared: Shared1) extends SimpleUnit {
 
     batch managed { render =>
       //batch.draw(Assets.Textures.corn(0), Const.UI.plantPos().x + 20, Const.UI.plantPos().y + 10)
-      batch.draw(Assets.Textures.corn(shared.player.progressLevel), Const.UI.plantPos().x, Const.UI.plantPos().y)
+      batch.draw(plant(shared.player.progressLevel), Const.UI.plantPos().x, Const.UI.plantPos().y)
     }
 
     hud.render()

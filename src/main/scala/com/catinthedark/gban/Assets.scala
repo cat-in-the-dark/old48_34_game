@@ -19,17 +19,47 @@ object Assets {
     val t2 = new Texture(Gdx.files.internal("textures/tutor_1.gif"))
     val t3 = new Texture(Gdx.files.internal("textures/tutor_2.gif"))
     val t4 = new Texture(Gdx.files.internal("textures/tutor_3.gif"))
-    val paring = new Texture(Gdx.files.internal("textures/pairing.png"))
-    val gameOver = new Texture(Gdx.files.internal("textures/gameover.gif"))
-    val gameWin = new Texture(Gdx.files.internal("textures/gamewin.gif"))
 
     val sky = new Texture(Gdx.files.internal("textures/sky.gif"))
-    val mexico = new Texture(Gdx.files.internal("textures/mexico.gif"))
-    val myHedge = new Texture(Gdx.files.internal("textures/myHedge.gif"))
     val ground = new Texture(Gdx.files.internal("textures/myGround.gif"))
 
     val road = new Texture(Gdx.files.internal("textures/road.gif"))
-    val enemyHedge = new Texture(Gdx.files.internal("textures/enemyHedge.gif"))
+    
+    trait ThemePack {
+      val hedge: Texture
+      val enemyHedge: Texture
+      val plant: Array[Texture]
+      val background: Texture
+      val winScreen: Texture
+      val loseScreen: Texture
+      val pairing: Texture
+    }
+    
+    object GoodThemePack extends ThemePack{
+      override val hedge: Texture = new Texture(Gdx.files.internal("textures/goodHedge.gif"))
+      override val plant: Array[Texture] = Array(
+        new Texture(Gdx.files.internal("textures/corn1.gif")),
+        new Texture(Gdx.files.internal("textures/corn2.gif")),
+        new Texture(Gdx.files.internal("textures/corn3.gif")))
+      override val enemyHedge: Texture = new Texture(Gdx.files.internal("textures/goodEnemyHedge.gif"))
+      override val background: Texture = new Texture(Gdx.files.internal("textures/mexico.gif"))
+      override val winScreen: Texture = new Texture(Gdx.files.internal("textures/gamewin.gif"))
+      override val loseScreen: Texture = new Texture(Gdx.files.internal("textures/gameover.gif"))
+      override val pairing: Texture = new Texture(Gdx.files.internal("textures/pairing.png"))
+    }
+
+    object UglyThemePack extends ThemePack{
+      override val hedge: Texture = new Texture(Gdx.files.internal("textures/uglyHedge.gif"))
+      override val plant: Array[Texture] = Array(
+        new Texture(Gdx.files.internal("textures/tomatos1.gif")),
+        new Texture(Gdx.files.internal("textures/tomatos2.gif")),
+        new Texture(Gdx.files.internal("textures/tomatos3.gif")))
+      override val enemyHedge: Texture = new Texture(Gdx.files.internal("textures/uglyEnemyHedge.gif"))
+      override val background: Texture = new Texture(Gdx.files.internal("textures/america.gif"))
+      override val winScreen: Texture = new Texture(Gdx.files.internal("textures/gamewin.gif"))
+      override val loseScreen: Texture = new Texture(Gdx.files.internal("textures/gameover.gif"))
+      override val pairing: Texture = new Texture(Gdx.files.internal("textures/pairing.png"))
+    }
 
     val goodFrames = TextureRegion.split(
       new Texture(Gdx.files.internal("textures/player_good.gif")), 320, 360)
@@ -49,10 +79,6 @@ object Assets {
     val enemyUgly = enemyUglyFrames(0)(0)
 
     val waterPump = new Texture(Gdx.files.internal("textures/water_pump.gif"))
-
-    val corn = Array(new Texture(Gdx.files.internal("textures/corn1.gif")),
-      new Texture(Gdx.files.internal("textures/corn2.gif")),
-      new Texture(Gdx.files.internal("textures/corn3.gif")))
   }
 
   object Fonts {

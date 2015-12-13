@@ -2,14 +2,14 @@ package com.catinthedark.gban
 
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.Texture
-import com.catinthedark.lib.{KeyAwaitState, Stub, TextureState}
+import com.catinthedark.lib.{KeyAwaitState, TextureState, Stub}
 
-class GameOverState(val shared: Shared0) extends Stub("GameOver") with TextureState with KeyAwaitState {
+class GameWinScreen(val shared: Shared0) extends Stub("GameWin") with TextureState with KeyAwaitState {
   override val keycode: Int = Input.Keys.ENTER
   override val texture: Texture = if (shared.networkControl.isServer) {
-    Assets.Textures.GoodThemePack.loseScreen
+    Assets.Textures.GoodThemePack.winScreen
   } else {
-    Assets.Textures.UglyThemePack.loseScreen
+    Assets.Textures.UglyThemePack.winScreen
   }
 
   override def onActivate(): Unit = {

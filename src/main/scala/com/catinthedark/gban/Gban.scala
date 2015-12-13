@@ -44,7 +44,7 @@ class Gban(address: String) extends Game {
     
     val game = new GameState(shared)
     val gameOver = new GameOverState(shared)
-    val gameWin = keyAwait("GameWin", Assets.Textures.gameWin)
+    val gameWin = new GameWinScreen(shared)
 
     rm.addRoute(logo, anyway => t1)
     rm.addRoute(t1, anyway => t2)
