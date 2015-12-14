@@ -2,7 +2,7 @@ package com.catinthedark.gban.units
 
 import com.catinthedark.gban.Assets
 import com.catinthedark.gban.common.Const
-import com.catinthedark.gban.view.DOWN
+import com.catinthedark.gban.view.{CRAWLING, DOWN}
 import com.catinthedark.lib.SimpleUnit
 
 class WaterControl(val shared: Shared1) extends SimpleUnit {
@@ -32,7 +32,7 @@ class WaterControl(val shared: Shared1) extends SimpleUnit {
     val player = shared.player
 
     if (player.water != 0 &&
-      player.state == DOWN &&
+      (player.state == DOWN || player.state == CRAWLING) &&
       player.x + Const.UI.playerDownWH().x >= (Const.UI.plantPos().x - Const.UI.pumpEpsilon())) {
 
       player.water -= Math.min(Const.Balance.waterOutSpeed(), player.water)
@@ -47,7 +47,7 @@ class WaterControl(val shared: Shared1) extends SimpleUnit {
       doOutAction(false)
 
     if (player.water != Const.Balance.bucketVolume &&
-      player.state == DOWN &&
+      (player.state == DOWN || player.state == CRAWLING) &&
       player.x < Const.UI.playerMinX() + Const.UI.pumpEpsilon()) {
 
       player.water = Math.min(player.water + Const.Balance.waterSpeed(), Const.Balance.bucketVolume)
