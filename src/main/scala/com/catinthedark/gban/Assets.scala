@@ -16,12 +16,13 @@ object Assets {
     val logo = new Texture(Gdx.files.internal("textures/logo.png"))
     val mouse = new Pixmap(Gdx.files.internal("textures/aim.gif"))
 
-    val t1 = new Texture(Gdx.files.internal("textures/menu.gif"))
-    val t2 = new Texture(Gdx.files.internal("textures/t1.gif"))
-    val t3 = new Texture(Gdx.files.internal("textures/t2.png"))
-    val t4 = new Texture(Gdx.files.internal("textures/t3.gif"))
-    val t5 = new Texture(Gdx.files.internal("textures/t4.gif"))
-    val t6 = new Texture(Gdx.files.internal("textures/t5.png"))
+    val t0 = new Texture(Gdx.files.internal("textures/start_screen.png"))
+    val t1 = new Texture(Gdx.files.internal("textures/tut1eng.png"))
+    val t2 = new Texture(Gdx.files.internal("textures/tut2eng.png"))
+    val t3 = new Texture(Gdx.files.internal("textures/tut3eng.png"))
+    val t4 = new Texture(Gdx.files.internal("textures/tut3_5eng.png"))
+    val t5 = new Texture(Gdx.files.internal("textures/tut4eng.png"))
+    val t6 = new Texture(Gdx.files.internal("textures/tut5eng.png"))
 
     val sky = new Texture(Gdx.files.internal("textures/sky.gif"))
     val ground = new Texture(Gdx.files.internal("textures/myGround.gif"))
@@ -48,7 +49,7 @@ object Assets {
       override val background: Texture = new Texture(Gdx.files.internal("textures/mexico.gif"))
       override val winScreen: Texture = new Texture(Gdx.files.internal("textures/win-screen-american.gif"))
       override val loseScreen: Texture = new Texture(Gdx.files.internal("textures/lose-screen-american.gif"))
-      override val pairing: Texture = new Texture(Gdx.files.internal("textures/pairing.png"))
+      override val pairing: Texture = new Texture(Gdx.files.internal("textures/pairing_screen.png"))
     }
 
     object UglyThemePack extends ThemePack{
@@ -61,7 +62,7 @@ object Assets {
       override val background: Texture = new Texture(Gdx.files.internal("textures/america.gif"))
       override val winScreen: Texture = new Texture(Gdx.files.internal("textures/win-screen-mexico.gif"))
       override val loseScreen: Texture = new Texture(Gdx.files.internal("textures/lose-screen-mexico.gif"))
-      override val pairing: Texture = new Texture(Gdx.files.internal("textures/pairing.png"))
+      override val pairing: Texture = new Texture(Gdx.files.internal("textures/pairing_screen.png"))
     }
 
     val goodFrames = TextureRegion.split(
