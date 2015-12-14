@@ -67,8 +67,8 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   }
 
   override def run(delta: Float): Option[Boolean] = {
-    children.foreach(_.run(delta))
     shared0.networkControl.processIn()
+    children.foreach(_.run(delta))
 
     if (forceReload) {
       forceReload = false
