@@ -123,7 +123,7 @@ object Const extends ConstDelegate {
 
   object Balance {
     val progressLevels = 3
-    val maxProgress = 200
+    val maxProgress = 350
     val initialProgress = maxProgress / 5
     val bucketVolume = 100
     val playerCooldown: Float = 0.5f
