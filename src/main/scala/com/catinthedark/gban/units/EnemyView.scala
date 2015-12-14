@@ -17,6 +17,7 @@ abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) e
 
   def onShoot(amIDie: Boolean): Unit = {
     println(s"I receive shoot $amIDie")
+    shared.enemy.state = SHOOTING
     if (amIDie) {
       shared.enemy.frags += 1
       shared.player.state = KILLED
@@ -55,6 +56,9 @@ abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) e
 
       case DOWN => //don't draw enemy
       case _ => println(s"Don't draw enemy state ${shared.enemy.state}")
+    }
+    if (shared.enemy.state != SHOOTING) {
+      shared.enemy.animationCounter = 0
     }
 
     dir map { dir =>
