@@ -13,7 +13,7 @@ import org.lwjgl.util.Point
 /**
   * Created by over on 02.01.15.
   */
-abstract class View(val shared: Shared1) extends SimpleUnit with Deferred{
+class View(val shared: Shared1) extends SimpleUnit {
   val (enemyBack, myHedge, enemyHedge, plant) = if (shared.shared0.networkControl.isServer) {
     (new ParallaxImage(Assets.Textures.GoodThemePack.background, Const.UI.enemyBackYRange, DOWN, inc = false),
       new ParallaxImage(Assets.Textures.GoodThemePack.hedge, Const.UI.myHedgeYRange, UP), 
@@ -33,9 +33,8 @@ abstract class View(val shared: Shared1) extends SimpleUnit with Deferred{
 
   val enemyView = new EnemyView(shared, Const.UI.enemyYRange, Const.UI.enemyParallaxSpeed) with LocalDeferred
 
-  shared.shared0.networkControl.onMovePipe.ports += enemyView.onMove
-  shared.shared0.networkControl.onShootPipe.ports += enemyView.onShoot
-  shared.shared0.networkControl.onAlivePipe.ports += enemyView.onAlive
+  shared.shared0.networkControl.onMove.ports += enemyView.onMove
+  shared.shared0.networkControl.onShoot.ports += enemyView.onShoot
 
 
 
@@ -72,9 +71,6 @@ abstract class View(val shared: Shared1) extends SimpleUnit with Deferred{
       enemyHatHeight = shared.enemy.rect.y
       shared.enemy.state = KILLED
       Assets.Audios.shoot.play(1)
-      defer(Const.Balance.restoreCooldown, () => {
-        shared.enemy.state = DOWN
-      })
     } else {
       Assets.Audios.ricochet.play(1)
     }

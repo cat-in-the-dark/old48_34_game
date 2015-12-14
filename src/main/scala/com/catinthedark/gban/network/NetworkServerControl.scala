@@ -49,9 +49,6 @@ class NetworkServerControl extends NetworkControl {
               val attrs = data(1).split(";")
               val progress = attrs(0).toInt
               onProgress(progress)
-            case ALIVE_PREFIX =>
-              println("enemy alived")
-              onAlive()
             case _ => println(s"UPS, wrong prefix $rawData")
           }
         }
@@ -75,7 +72,6 @@ class NetworkServerControl extends NetworkControl {
     }
 
     buffer.clear()
-    bufferIn.clear()
     pullSocket.close()
     pushSocket.close()
     isConnected = None

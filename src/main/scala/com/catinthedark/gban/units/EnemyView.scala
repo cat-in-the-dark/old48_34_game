@@ -26,7 +26,6 @@ abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) e
         println("I Alive again")
         shared.player.state = UP
         shared.shared0.networkControl.move(shared.player.x, standUp = true)
-        shared.shared0.networkControl.iAlive()
       })
       Assets.Audios.shoot.play(1)
     } else {
@@ -35,12 +34,6 @@ abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) e
   }
 
   def onMove(pos: (Float, Boolean)): Unit = {
-    if(shared.enemy.state == KILLED){
-      println("discard move due to enemy is dead! wait for alive!")
-      return
-    }
-
-
     println(s"Enemy moved $pos")
     shared.enemy.x = pos._1
     shared.enemy.state = if (pos._2) {
@@ -48,11 +41,6 @@ abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) e
     } else {
       DOWN
     }
-  }
-
-  def onAlive(u: Unit) = {
-    if(shared.enemy.state == KILLED)
-      shared.enemy.state = UP
   }
 
   def render(delta: Float, magicBatch: MagicSpriteBatch) = {
