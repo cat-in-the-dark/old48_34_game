@@ -70,6 +70,9 @@ class View(val shared: Shared1) extends SimpleUnit {
       enemyKilledPos = shared.enemy.rect.x
       enemyHatHeight = shared.enemy.rect.y
       shared.enemy.state = KILLED
+      Assets.Audios.shoot.play(1)
+    } else {
+      Assets.Audios.ricochet.play(1)
     }
     println(s"I shoot $point in the ${shared.enemy.physRect} and amIExactly: $amIExactly")
     shared.shared0.networkControl.shoot(amIExactly)

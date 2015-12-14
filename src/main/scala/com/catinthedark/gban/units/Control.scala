@@ -57,11 +57,12 @@ abstract class Control(shared: Shared1) extends SimpleUnit with Deferred {
             case UP | RUNNING =>
               if (!shared.player.coolDown) {
                 onPlayerStateChanged(SHOOTING)
-                Assets.Audios.shoot.play(1)
                 shared.player.coolDown = true
                 defer(Balance.playerCooldown, () => shared.player.state = UP)
                 defer(Balance.weaponCooldown, () => shared.player.coolDown = false)
                 onShoot(new Point(x, Const.Projection.height.toInt - y))
+              } else {
+                Assets.Audios.shootOut.play(1)
               }
             case _ =>
           }

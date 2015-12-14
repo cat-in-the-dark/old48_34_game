@@ -27,6 +27,7 @@ abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) e
         shared.player.state = UP
         shared.shared0.networkControl.move(shared.player.x, standUp = true)
       })
+      Assets.Audios.shoot.play(1)
     } else {
       Assets.Audios.ricochet.play()
     }
