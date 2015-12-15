@@ -16,7 +16,7 @@ class NetworkServerControl extends NetworkControl {
 
     val pollItems = Array(new PollItem(pullSocket, Poller.POLLIN), new PollItem(pushSocket, Poller.POLLOUT))
     var shouldStop: Boolean = false
-    var receivedGameEnd: Boolean = false
+    var detectedGameEnd: Boolean = false
 
     while (!shouldStop && !Thread.currentThread().isInterrupted) {
       try {
@@ -37,10 +37,10 @@ class NetworkServerControl extends NetworkControl {
               val exactly = attrs(0).toBoolean
               onShoot(exactly)
             case ILOOSE_PREFIX =>
-              receivedGameEnd = true
+              detectedGameEnd = true
               onILoose()
             case IWON_PREFIX =>
-              receivedGameEnd = true
+              detectedGameEnd = true
               onIWon()
             case HELLO_PREFIX =>
               pushSocket.send(s"$HELLO_PREFIX:")
@@ -57,6 +57,7 @@ class NetworkServerControl extends NetworkControl {
           val message = buffer.poll()
           pushSocket.send(message)
           if (message.startsWith(IWON_PREFIX) || message.startsWith(ILOOSE_PREFIX)) {
+            detectedGameEnd = true
             shouldStop = true
           }
         }
@@ -67,7 +68,7 @@ class NetworkServerControl extends NetworkControl {
       }
     }
 
-    if (!receivedGameEnd) {
+    if (!detectedGameEnd) {
       pushSocket.send(s"$IWON_PREFIX:")
     }
 
