@@ -9,7 +9,7 @@ import com.catinthedark.lib.{Interval, LocalDeferred, YieldUnit}
   */
 class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   val shared1 = new Shared1(shared0)
-  val view = new View(shared1)
+  val view = new View(shared1) with LocalDeferred
   val control = new Control(shared1) with LocalDeferred
   val waterControl = new WaterControl(shared1) with Interval {
     val interval = 0.2f
@@ -48,10 +48,10 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
     }
   }
 
-  shared0.networkControl.onILoose.ports += onILoose
-  shared0.networkControl.onIWon.ports += onIWon
+  shared0.networkControl.onILoosePipe.ports += onILoose
+  shared0.networkControl.onIWonPipe.ports += onIWon
 
-  shared0.networkControl.onProgress.ports += progressDown.onEnemyProgress
+  shared0.networkControl.onProgressPipe.ports += progressDown.onEnemyProgress
   val children = Seq(view, control, waterControl, progressDown)
 
 
@@ -67,6 +67,7 @@ class GameState(shared0: Shared0) extends YieldUnit[Boolean] {
   }
 
   override def run(delta: Float): Option[Boolean] = {
+    shared0.networkControl.processIn()
     children.foreach(_.run(delta))
 
     if (forceReload) {
