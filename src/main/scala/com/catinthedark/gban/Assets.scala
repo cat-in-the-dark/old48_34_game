@@ -11,6 +11,7 @@ import com.catinthedark.gban.common.Const
   * Created by over on 13.12.14.
   */
 object Assets {
+  val cursor = Gdx.graphics.newCursor(Textures.mouse, 64, 64)
 
   object Textures {
     val logo = new Texture(Gdx.files.internal("textures/logo.png"))

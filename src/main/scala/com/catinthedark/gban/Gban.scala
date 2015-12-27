@@ -72,7 +72,7 @@ class Gban(address: String) extends Game {
   }
 
   override def render() = {
-    Gdx.input.setCursorImage(Assets.Textures.mouse, 64, 64)
+    Gdx.graphics.setCursor(Assets.cursor)
     rm.run(Gdx.graphics.getDeltaTime)
   }
 
