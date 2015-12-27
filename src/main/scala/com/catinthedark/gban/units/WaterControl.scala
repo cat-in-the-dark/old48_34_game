@@ -51,7 +51,7 @@ class WaterControl(val shared: Shared1) extends SimpleUnit {
       player.x < Const.UI.playerMinX() + Const.UI.pumpEpsilon()) {
 
       player.water = Math.min(player.water + Const.Balance.waterSpeed(), Const.Balance.bucketVolume)
-      return doInAction(true)
+      doInAction(true)
     } else {
       doInAction(false)
     }

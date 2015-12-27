@@ -19,7 +19,7 @@ class ParallaxImage(val tex: Texture, range: Vec2Range, initial: State, inc: Boo
   def render(delta: Float, batch: SpriteBatch, xPos: Float, animationSpeed: Float) = {
     batch.draw(tex, xPos, y)
 
-    direction map { dir: State =>
+    direction foreach { dir: State =>
       val newY = dir match {
         case UP | RUNNING | SHOOTING => if (inc) y - delta * animationSpeed else y + delta * animationSpeed
         case DOWN | CRAWLING => if (inc) y + delta * animationSpeed else y - delta * animationSpeed

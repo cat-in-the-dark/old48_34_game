@@ -74,7 +74,7 @@ abstract class EnemyView(val shared: Shared1, range: Vec2Range, speed: FRange) e
       shared.enemy.animationCounter = 0
     }
 
-    dir map { dir =>
+    dir foreach { dir =>
       val newY = dir match {
         case UP | RUNNING | SHOOTING => y + delta * speed()
         case DOWN | CRAWLING => y - delta * speed()

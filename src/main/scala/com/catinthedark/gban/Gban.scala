@@ -2,11 +2,7 @@ package com.catinthedark.gban
 
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.{Game, Gdx, Input}
-import com.catinthedark.gban.common.Const
 import com.catinthedark.lib._
-import com.catinthedark.gban.units.RenderFactory
-
-import scala.collection.mutable
 import scala.util.Random
 
 /**
